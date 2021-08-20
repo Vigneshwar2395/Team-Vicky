@@ -1,4 +1,4 @@
-pool: shiraPCAgent
+pool: Default
 
 steps: 
 - script: hostname
