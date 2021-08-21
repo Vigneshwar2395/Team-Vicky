@@ -2,3 +2,20 @@ pool: Default
 
 steps: 
 - script: hostname
+
+- script:
+    $srcResourceGroupName = "ShiraStorageAccount-rg"
+    $srcStorageAccountName = "shirastorageaccount1"
+    $srcContainer = "shira-myfirstcontainer"
+    $blobName = "microsoft-1.png"
+    
+    $destResourceGroupName = "ShiraStorageAccount-rg"
+    $destStorageAccountName = "shirastorageaccount2"
+    $destContainer = "shira-mysecondcontainer"
+    $srcStorageKey = Get-AzStorageAccountKey -Name $shirastorageaccount1 `
+                                         -ResourceGroupName $ShiraStorageAccount-rg 
+ 
+ 
+    $destStorageKey = Get-AzStorageAccountKey -Name $shirastorageaccount2 `
+                                          -ResourceGroupName $ShiraStorageAccount-rg
+
