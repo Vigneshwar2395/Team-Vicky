@@ -4,7 +4,7 @@ steps:
 - script: hostname
 
 - script:
-    az storage container create -n shirastorageaccount1
+     powershell az storage container create -n shirastorageaccount1
                                                 
 #    $srcResourceGroupName = "ShiraStorageAccount-rg"
 #   $srcStorageAccountName = "shirastorageaccount1"
