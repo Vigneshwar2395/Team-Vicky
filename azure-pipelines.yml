@@ -12,10 +12,19 @@ steps:
     $destResourceGroupName = "ShiraStorageAccount-rg"
     $destStorageAccountName = "shirastorageaccount2"
     $destContainer = "shira-mysecondcontainer"
+
     $srcStorageKey = Get-AzStorageAccountKey -Name $shirastorageaccount1 `
                                          -ResourceGroupName $ShiraStorageAccount-rg 
  
  
     $destStorageKey = Get-AzStorageAccountKey -Name $shirastorageaccount2 `
                                           -ResourceGroupName $ShiraStorageAccount-rg
+
+                                          
+    $copyOperation = Start-AzStorageBlobCopy -SrcBlob $microsoft-1.png `
+                                         -SrcContainer $shira-myfirstcontainer `
+                                         -Context $srcContext `
+                                         -DestBlob $microsoft-2.png `
+                                         -DestContainer $shira-mysecondcontainer `
+                                         -DestContext $destContext
 
