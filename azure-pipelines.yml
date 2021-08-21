@@ -2,4 +2,3 @@ pool: Default
 
 steps: 
 - script: hostname
-try
