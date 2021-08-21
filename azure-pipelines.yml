@@ -2,7 +2,5 @@ pool: Default
 
 steps: 
   - script: hostname
-  - script: 
-      'az storage container create -n shirastorageaccount1'
 
 
