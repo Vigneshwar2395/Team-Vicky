@@ -7,5 +7,5 @@ stages:
           - script: hostname
           - task: CmdLine@2
             inputs:
-              script: |
-                      New-AzStorageContainer -Name "quickstartblobs" -Context $ctx -Permission blob.
+              script: 'az storage container create -n mystoragecontainer'
+#                      New-AzStorageContainer -Name "quickstartblobs" -Context $ctx -Permission blob.
