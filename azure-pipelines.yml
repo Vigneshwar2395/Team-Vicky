@@ -1,4 +1,4 @@
-pool: "simple-vm"
+pool: "Default"
 stages:
   - stage: Deploy
     jobs:
