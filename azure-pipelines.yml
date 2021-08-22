@@ -1,8 +1,8 @@
+pool: "simple-vm"
 stages:
   - stage: Deploy
     jobs:
     - job: Deploy
-      pool: Default
       steps:
           - script: hostname
           - task: CmdLine@2
