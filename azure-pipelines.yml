@@ -9,9 +9,6 @@ stages:
       pool: Default
       steps:
           - script: hostname
-          - task: AzureCLI@0
+          - task: CmdLine@2
             inputs:
-              scriptLocation: 'inlineScript'
-              inlineScript: 'az storage container create -n shira-myfirstcontainer'
-            
-  
+              script: 'echo Write your commands here.' 
