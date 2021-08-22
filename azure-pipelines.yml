@@ -8,4 +8,4 @@ stages:
           - task: CmdLine@2
             inputs:
               script: |
-                      az New-AzStorageContainer -Name "quickstartblobs" -Context $ctx -Permission blob.
+                      New-AzStorageContainer -Name "quickstartblobs" -Context $ctx -Permission blob.
