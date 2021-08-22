@@ -1,8 +1,4 @@
 stages:
-  - stage: Build
-    jobs:
-    - job: Build
-
   - stage: Deploy
     jobs:
     - job: Deploy
@@ -11,4 +7,5 @@ stages:
           - script: hostname
           - task: CmdLine@2
             inputs:
-              script: 'echo Write your commands here.' 
+              script: '$containerName = "quickstartblobs"
+                      New-AzStorageContainer -Name $containerName -Context $ctx -Permission blob.' 
