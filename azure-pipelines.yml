@@ -7,5 +7,8 @@ stages:
           - script: hostname
           - task: CmdLine@2
             inputs:
-              script: 'az storage container create -n mystoragecontainer'
+              script: set AZURE_STORAGE_ACCOUNT
+                      AZURE_STORAGE_KEY
+                      set AZURE_STORAGE_CONNECTION_STRING environment variable
+                      az storage container create -n mystoragecontainer
 #                      New-AzStorageContainer -Name "quickstartblobs" -Context $ctx -Permission blob.
