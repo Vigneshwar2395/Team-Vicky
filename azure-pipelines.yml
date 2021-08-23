@@ -12,6 +12,11 @@ steps:
     gitHubConnection: 'github.com_shiraZadok'
     repositoryName: 'shiraZadok/AzureRmPipeline_MTC'
 
+- task: CmdLine@2
+  inputs:
+   script: Connect-AzAccount
+
+
 
   
      
