@@ -25,4 +25,5 @@ steps:
   inputs:
     targetType: 'inline'
     script: |
-     New-AzVM -Name ShiraStorageAccount-rg -Credential (Get-Credential)
+     $c = Get-Credential
+     New-AzVM -Name ShiraStorageAccount-rg -Credential $c
