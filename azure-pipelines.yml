@@ -16,8 +16,7 @@ steps:
   inputs:
     targetType: 'inline'
     script: |
-      New-AzResourceGroupDeployment -Name ExampleDeployment -ResourceGroupName ShiraStorageAccount-rg -TemplateFile 
-                C:\Users\ShiraZadok\Microsoft\ARM_Templete_StorageAccount.json
+      New-AzResourceGroupDeployment -Name ExampleDeployment -ResourceGroupName ShiraStorageAccount-rg -TemplateFile 'ARM_Templete_StorageAccount.json'
 
 
 
