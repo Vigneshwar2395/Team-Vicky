@@ -9,7 +9,7 @@ steps:
 - task: AzureResourceManagerTemplateDeployment@3
   inputs:
       deploymentScope: 'Resource Group'
-      azureResourceManagerConnection: 'shiraZadok'
+      azureResourceManagerConnection: 'MSEC_Candidates_Homeworks(a8108c2b-496c-424d-8347-ecc8afb6384c)'
       subscriptionId: 'a8108c2b-496c-424d-8347-ecc8afb6384c'
       action: 'Create Or Update Resource Group'
       resourceGroupName: 'ShiraStorageAccount-rg'
@@ -19,7 +19,7 @@ steps:
       overrideParameters: 'projectName jgao214'
       deploymentMode: 'Incremental'
       deploymentName: 'try'
-      
+
 
   
      
