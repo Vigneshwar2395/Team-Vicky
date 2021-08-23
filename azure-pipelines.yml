@@ -25,4 +25,4 @@ steps:
   inputs:
     targetType: 'inline'
     script: |
-     New-AzVm -ResourceGroupName -Name DeploymentVM -ResourceGroupName ShiraStorageAccount-rg -TemplateFile 'ARM_Templete_WindowsServer.json'
+     New-AzVM -Name ShiraStorageAccount-rg -Credential (Get-Credential)
