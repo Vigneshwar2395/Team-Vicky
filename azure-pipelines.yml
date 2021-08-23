@@ -15,7 +15,9 @@ steps:
   inputs:
     targetType: 'inline'
     script: |
+      For ($i=0; $i<2; $i++) {
       New-AzResourceGroupDeployment -Name ExampleDeployment -ResourceGroupName ShiraStorageAccount-rg -TemplateFile 'ARM_Templete_StorageAccount.json'
+      }
 
 
 
