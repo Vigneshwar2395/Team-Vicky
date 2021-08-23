@@ -11,6 +11,7 @@ steps:
     gitHubConnection: 'github.com_shiraZadok'
     repositoryName: 'shiraZadok/AzureRmPipeline_MTC'
 
+#Task 2
 - task: PowerShell@2
   inputs:
     targetType: 'inline'
@@ -19,23 +20,8 @@ steps:
       New-AzResourceGroupDeployment -Name ExampleDeployment -ResourceGroupName ShiraStorageAccount-rg -TemplateFile 'ARM_Templete_StorageAccount.json'
       }
 
-
-
-  
-     
-
-
-#stages:
-#  - stage: Deploy
-#    jobs:
-#    - job: Deploy
-      
-
-
-#          - task: CmdLine@2
-#            inputs:
-#              script: set AZURE_STORAGE_ACCOUNT
-#                      AZURE_STORAGE_KEY
-#                      set AZURE_STORAGE_CONNECTION_STRING environment variable
-#                      az storage container create -n mystoragecontainer
-#                      New-AzStorageContainer -Name "quickstartblobs" -Context $ctx -Permission blob.
+#Task 3
+- task: PowerShell@2
+  inputs:
+    targetType: 'inline'
+    script: '(Get-AzVm -ResourceGroupName $ShiraStorageAccount-rg).ARM_Templete_WindowsServer.json'
