@@ -15,7 +15,7 @@ steps:
 - task: CmdLine@2
   inputs:
    script: New-AzResourceGroupDeployment -Name ExampleDeployment -ResourceGroupName ShiraStorageAccount-rg -TemplateFile 
-C:\Users\ShiraZadok\Microsoft\ARM_Templete_StorageAccount.json
+          C:\Users\ShiraZadok\Microsoft\ARM_Templete_StorageAccount.json
 
 
 
