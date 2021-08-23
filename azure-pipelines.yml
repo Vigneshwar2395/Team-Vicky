@@ -12,10 +12,12 @@ steps:
     gitHubConnection: 'github.com_shiraZadok'
     repositoryName: 'shiraZadok/AzureRmPipeline_MTC'
 
-- task: CmdLine@2
+- task: PowerShell@2
   inputs:
-   script: New-AzResourceGroupDeployment -Name ExampleDeployment -ResourceGroupName ShiraStorageAccount-rg -TemplateFile 
-          C:\Users\ShiraZadok\Microsoft\ARM_Templete_StorageAccount.json
+    targetType: 'inline'
+    script: |
+      New-AzResourceGroupDeployment -Name ExampleDeployment -ResourceGroupName ShiraStorageAccount-rg -TemplateFile 
+                C:\Users\ShiraZadok\Microsoft\ARM_Templete_StorageAccount.json
 
 
 
