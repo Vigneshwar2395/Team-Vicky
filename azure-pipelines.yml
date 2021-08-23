@@ -24,4 +24,4 @@ steps:
 - task: PowerShell@2
   inputs:
     targetType: 'inline'
-    script: '(Get-AzVm -ResourceGroupName $ShiraStorageAccount-rg).ARM_Templete_WindowsServer.json'
+    script: '(Get-AzVm -ResourceGroupName $resourceGroupName = "ShiraStorageAccount-rg").ARM_Templete_WindowsServer.json'
