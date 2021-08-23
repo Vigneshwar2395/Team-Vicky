@@ -17,11 +17,12 @@ steps:
     targetType: 'inline'
     script: |
       For ($i=0; $i -lt 2; $i++) {
-      New-AzResourceGroupDeployment -Name ExampleDeployment -ResourceGroupName ShiraStorageAccount-rg -TemplateFile 'ARM_Templete_StorageAccount.json'
+      New-AzResourceGroupDeployment -Name DeploymentSA -ResourceGroupName ShiraStorageAccount-rg -TemplateFile 'ARM_Templete_StorageAccount.json'
       }
 
 #Task 3
 - task: PowerShell@2
   inputs:
     targetType: 'inline'
-    script: '(Get-AzVm -ResourceGroupName $resourceGroupName = "ShiraStorageAccount-rg").ARM_Templete_WindowsServer.json'
+    script: |
+     New-AzVm -ResourceGroupName -Name DeploymentVM -ResourceGroupName ShiraStorageAccount-rg -TemplateFile 'ARM_Templete_WindowsServer.json'
