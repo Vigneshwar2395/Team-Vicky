@@ -4,7 +4,6 @@ trigger:
 pool: Default
 
 steps:
-
 - script: hostname
 
 - task: GitHubComment@0
