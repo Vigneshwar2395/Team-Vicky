@@ -14,7 +14,7 @@ steps:
 
 - task: CmdLine@2
   inputs:
-   script: Connect-AzAccount
+   script: New-AzResourceGroupDeployment -Name "B" -ResourceGroupName ShiraStorageAccount-rg
 
 
 
