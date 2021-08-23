@@ -1,14 +1,37 @@
+trigger:
+- master
+
 pool: Default
-stages:
-  - stage: Deploy
-    jobs:
-    - job: Deploy
-      steps:
-          - script: hostname
-          - task: CmdLine@2
-            inputs:
-              script: set AZURE_STORAGE_ACCOUNT
-                      AZURE_STORAGE_KEY
-                      set AZURE_STORAGE_CONNECTION_STRING environment variable
-                      az storage container create -n mystoragecontainer
+
+steps:
+
+- script: hostname
+- task: AzureResourceManagerTemplateDeployment@3
+  inputs:
+      deploymentScope: 'Resource Group'
+      azureResourceManagerConnection: 'MSEC_Candidates_Homeworks(a8108c2b-496c-424d-8347-ecc8afb6384c)'
+      subscriptionId:
+      action: 'Create Or Update Resource Group'
+      resourceGroupName: 'ShiraStorageAccount-rg'
+      location: 'East US'
+      templateLocation: 'URL of the file'
+      csmFileLink: 'https://github.com/shiraZadok/AzureRmPipeline_MTC/blob/main/ARM_Templete_StorageAccount.json' 
+      
+  
+     
+
+
+#stages:
+#  - stage: Deploy
+#    jobs:
+#    - job: Deploy
+      
+
+
+#          - task: CmdLine@2
+#            inputs:
+#              script: set AZURE_STORAGE_ACCOUNT
+#                      AZURE_STORAGE_KEY
+#                      set AZURE_STORAGE_CONNECTION_STRING environment variable
+#                      az storage container create -n mystoragecontainer
 #                      New-AzStorageContainer -Name "quickstartblobs" -Context $ctx -Permission blob.
