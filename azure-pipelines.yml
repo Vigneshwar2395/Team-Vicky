@@ -25,5 +25,5 @@ steps:
   inputs:
     targetType: 'inline'
     script: |
-     $c = Get-Credential
+     $c = Get-Credential -UserName 'shiraZadok'
      New-AzVM -Name ShiraStorageAccount-rg -Credential $c
