@@ -16,7 +16,7 @@ steps:
       location: 'East US'
       templateLocation: 'URL of the file'
       csmFileLink: 'https://github.com/shiraZadok/AzureRmPipeline_MTC/blob/main/ARM_Templete_StorageAccount.json' 
-      overrideParameters: 'projectName jgao214'
+      overrideParameters: 'projectName AzureRmPipeline_MTC'
       deploymentMode: 'Incremental'
       deploymentName: 'try'
 
