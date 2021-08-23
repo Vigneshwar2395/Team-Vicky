@@ -12,7 +12,7 @@ steps:
       azureResourceManagerConnection: 'MSEC_Candidates_Homeworks(a8108c2b-496c-424d-8347-ecc8afb6384c)'
       subscriptionId: 'a8108c2b-496c-424d-8347-ecc8afb6384c'
       action: 'Create Or Update Resource Group'
-      resourceGroupName: 'ShiraStorageAccount-rg'
+      resourceGroupName:
       location: 'East US'
       templateLocation: 'URL of the file'
       csmFileLink: 'https://github.com/shiraZadok/AzureRmPipeline_MTC/blob/main/ARM_Templete_StorageAccount.json' 
