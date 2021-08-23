@@ -10,13 +10,17 @@ steps:
   inputs:
       deploymentScope: 'Resource Group'
       azureResourceManagerConnection: 'shiraZadok'
-      subscriptionId:
+      subscriptionId: 'a8108c2b-496c-424d-8347-ecc8afb6384c'
       action: 'Create Or Update Resource Group'
       resourceGroupName: 'ShiraStorageAccount-rg'
       location: 'East US'
       templateLocation: 'URL of the file'
       csmFileLink: 'https://github.com/shiraZadok/AzureRmPipeline_MTC/blob/main/ARM_Templete_StorageAccount.json' 
+      overrideParameters: 'projectName jgao214'
+      deploymentMode: 'Incremental'
+      deploymentName: 'try'
       
+
   
      
 
