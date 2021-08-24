@@ -23,13 +23,12 @@ steps:
 - task: PowerShell@2
   inputs:
     targetType: 'inline'
-    script: |
-      New-AzResourceGroup -Name ShiraStorageAccount-rg -Location "East US" -Force
-      New-AzResourceGroupDeployment `
+    script: | 
+     #New-AzResourceGroup -Name ShiraStorageAccount-rg -Location "East US" -Force
+     New-AzResourceGroupDeployment `
           -ResourceGroupName ShiraStorageAccount-rg `
           -TemplateUri "https://github.com/shiraZadok/AzureRmPipeline_MTC/blob/main/ARM_Templete_WindowsServer.json" `
           -adminUsername shiraZadok `
           -adminPassword shsz6457 `
           -dnsLabelPrefix simple-vm2-fkxmkzr5awdd2.eastus.cloudapp.azure.com
-
-      (Get-AzVm -ResourceGroupName ShiraStorageAccount-rg).name
+          (Get-AzVm -ResourceGroupName ShiraStorageAccount-rg).name
