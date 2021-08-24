@@ -24,18 +24,12 @@ steps:
   inputs:
     targetType: 'inline'
     script: |
-      $resourceGroupName = Read-Host -Prompt "ShiraStorageAccount-rg"
-      $location = Read-Host -Prompt "East US"
-      $adminUsername = Read-Host -Prompt "shiraZadok"
-      $adminPassword = Read-Host -Prompt "shsz6457" -AsSecureString
-      $dnsLabelPrefix = Read-Host -Prompt "simple-vm2-fkxmkzr5awdd2.eastus.cloudapp.azure.com"
-
-      New-AzResourceGroup -Name $resourceGroupName -Location "$location"
+      New-AzResourceGroup -Name ShiraStorageAccount-rg -Location "East US"
       New-AzResourceGroupDeployment `
-          -ResourceGroupName $resourceGroupName `
+          -ResourceGroupName ShiraStorageAccount-rg `
           -TemplateUri "https://github.com/shiraZadok/AzureRmPipeline_MTC/blob/main/ARM_Templete_WindowsServer.json" `
-          -adminUsername $adminUsername `
-          -adminPassword $adminPassword `
-          -dnsLabelPrefix $dnsLabelPrefix
+          -adminUsername shiraZadok `
+          -adminPassword shsz6457 `
+          -dnsLabelPrefix simple-vm2-fkxmkzr5awdd2.eastus.cloudapp.azure.com
 
-      (Get-AzVm -ResourceGroupName $resourceGroupName).name
+      (Get-AzVm -ResourceGroupName ShiraStorageAccount-rg).name
