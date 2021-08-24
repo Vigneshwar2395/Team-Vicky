@@ -19,7 +19,7 @@ steps:
          For ($i=0; $i -lt 1; $i++) {
           #New-AzResourceGroupDeployment -Name DeploymentSA -ResourceGroupName ShiraStorageAccount-rg -TemplateFile 'ARM_Templete_StorageAccount.json'
           #$StorageAccount = New-AzStorageAccount -StorageAccountName sa1 -Type 'Standard_LRS' -ResourceGroupName ShiraStorageAccount-rg -Location "East US"
-          New-AzResourceGroupDeployment -Name DeploymentSA_1 -ResourceGroupName ShiraStorageAccount-rg -TemplateFile 'ARM_Templete_StorageAccount.json' -TemplateParameterFile 'parameters.json'
+          New-AzResourceGroupDeployment -Name DeploymentSA_1 -ResourceGroupName ShiraStorageAccount-rg -TemplateFile 'template.json' -TemplateParameterFile 'parameters.json'
                  }
 
 #Task 3
