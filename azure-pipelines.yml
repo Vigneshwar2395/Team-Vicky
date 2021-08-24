@@ -25,10 +25,11 @@ steps:
     targetType: 'inline'
     script: | 
      #New-AzResourceGroup -Name ShiraStorageAccount-rg -Location "East US" -Force
-     New-AzResourceGroupDeployment `
-          -ResourceGroupName ShiraStorageAccount-rg `
-          -TemplateUri "https://github.com/shiraZadok/AzureRmPipeline_MTC/blob/main/ARM_Templete_WindowsServer.json" `
+     New-AzResourceGroupDeployment -Name Deployment-Create_the_first_VM -ResourceGroupName ShiraStorageAccount-rg -TemplateFile 'ARM_Templete_WindowsServer.json'
+     #New-AzResourceGroupDeployment `
+          #-ResourceGroupName ShiraStorageAccount-rg `
+          #-TemplateUri "https://github.com/shiraZadok/AzureRmPipeline_MTC/blob/main/ARM_Templete_WindowsServer.json" `
           #-adminUsername shira.zadok `
           #-adminPassword shsz6457 `
-          -dnsLabelPrefix simple-vm2-fkxmkzr5awdd2.eastus.cloudapp.azure.com
-          (Get-AzVm -ResourceGroupName ShiraStorageAccount-rg).name
+          #-dnsLabelPrefix shiraipadress.eastus.cloudapp.azure.com
+          #(Get-AzVm -ResourceGroupName ShiraStorageAccount-rg).name
