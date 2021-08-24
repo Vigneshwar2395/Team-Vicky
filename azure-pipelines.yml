@@ -16,9 +16,10 @@ steps:
   inputs:
     targetType: 'inline'
     script: |
-      For ($i=0; $i -lt 2; $i++) {
-      New-AzResourceGroupDeployment -Name DeploymentSA -ResourceGroupName ShiraStorageAccount-rg -TemplateFile 'ARM_Templete_StorageAccount.json'
-      }
+         For ($i=0; $i -lt 2; $i++) {
+          # New-AzResourceGroupDeployment -Name DeploymentSA -ResourceGroupName ShiraStorageAccount-rg -TemplateFile 'ARM_Templete_StorageAccount.json'
+          $StorageAccount = New-AzStorageAccount -StorageAccountName A -Type 'Standard_LRS' -ResourceGroupName ShiraStorageAccount-rg -Location "East US"
+                 }
 
 #Task 3
 - task: PowerShell@2
