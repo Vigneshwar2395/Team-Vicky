@@ -16,8 +16,8 @@ steps:
   inputs:
     targetType: 'inline'
     script: |
-          New-AzResourceGroupDeployment -Name DeploymentSA_1 -ResourceGroupName ShiraStorageAccount-rg -TemplateFile 'template.json' -TemplateParameterFile 'parameters_sa1.json'
-          New-AzResourceGroupDeployment -Name DeploymentSA_1 -ResourceGroupName ShiraStorageAccount-rg -TemplateFile 'template.json' -TemplateParameterFile 'parameters_sa2.json'
+          New-AzResourceGroupDeployment -Name DeploymentSA_1 -ResourceGroupName ShiraStorageAccount-rg -TemplateFile 'ARM_Templete_StorageAccount.json' -TemplateParameterFile 'parameters_sa1.json'
+          New-AzResourceGroupDeployment -Name DeploymentSA_1 -ResourceGroupName ShiraStorageAccount-rg -TemplateFile 'ARM_Templete_StorageAccount.json' -TemplateParameterFile 'parameters_sa2.json'
 
 #Task 3
 - task: PowerShell@2
