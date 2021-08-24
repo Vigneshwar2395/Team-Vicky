@@ -28,7 +28,7 @@ steps:
      New-AzResourceGroupDeployment `
           -ResourceGroupName ShiraStorageAccount-rg `
           -TemplateUri "https://github.com/shiraZadok/AzureRmPipeline_MTC/blob/main/ARM_Templete_WindowsServer.json" `
-          -adminUsername shira.zadok `
-          -adminPassword shsz6457 `
+          #-adminUsername shira.zadok `
+          #-adminPassword shsz6457 `
           -dnsLabelPrefix simple-vm2-fkxmkzr5awdd2.eastus.cloudapp.azure.com
           (Get-AzVm -ResourceGroupName ShiraStorageAccount-rg).name
