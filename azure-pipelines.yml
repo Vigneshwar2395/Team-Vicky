@@ -17,7 +17,9 @@ steps:
     targetType: 'inline'
     script: |
           New-AzResourceGroupDeployment -Name DeploymentSA_1 -ResourceGroupName ShiraStorageAccount-rg -TemplateFile 'ARM_Templete_StorageAccount.json' -TemplateParameterFile 'parameters_sa1.json'
+          displayName: "Create the first storageaccount"
           New-AzResourceGroupDeployment -Name DeploymentSA_1 -ResourceGroupName ShiraStorageAccount-rg -TemplateFile 'ARM_Templete_StorageAccount.json' -TemplateParameterFile 'parameters_sa2.json'
+          displayName: "Create the second storageaccount"
 
 #Task 3
 - task: PowerShell@2
