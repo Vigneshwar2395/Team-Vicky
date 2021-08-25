@@ -44,6 +44,9 @@
         "adminUsername": {
             "type": "string"
         }
+        "adminPassword": {
+            "type": "string"
+        }
     },
     "variables": {
         "vnetId": "[parameters('virtualNetworkId')]",
