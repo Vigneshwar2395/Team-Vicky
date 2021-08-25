@@ -6,10 +6,10 @@ pool: Default
 steps:
 - script: hostname
 
-#- task: GitHubComment@0
-#  inputs:
-#    gitHubConnection: 'github.com_shiraZadok'
-#    repositoryName: 'shiraZadok/AzureRmPipeline_MTC'
+- task: GitHubComment@0
+  inputs:
+    gitHubConnection: 'github.com_shiraZadok'
+    repositoryName: 'shiraZadok/AzureRmPipeline_MTC'
 
 #Task 2
 - task: PowerShell@2
@@ -23,18 +23,13 @@ steps:
      #New-AzResourceGroupDeployment -Name Deployment-Create_the_first_storageaccount -ResourceGroupName ShiraStorageAccount-rg -TemplateFile 'Generally_Template_StorageAccount.json'}
 
 #Task 3
-- task: PowerShell@2
+- task: AzureResourceManagerTemplateDeployment@3
   inputs:
-    targetType: 'inline'
-    script: | 
-     $resourceGroupName = "ShiraStorageAccount-rg"
-      $location = "East US"
-      $dnsLabelPrefix = "shiraipadress.eastus.cloudapp.azure.com"
-
-      New-AzResourceGroup -Name ShiraStorageAccount-rg -Location "East US" -Force
-      New-AzResourceGroupDeployment -Name Deployment-Create_the_first_VM -ResourceGroupName ShiraStorageAccount-rg -TemplateFile 'ARM_Templete_WindowsServer.json'
-      New-AzResourceGroupDeployment `
-      -ResourceGroupName ShiraStorageAccount-rg `
-      -TemplateUri "https://github.com/shiraZadok/AzureRmPipeline_MTC/blob/main/ARM_Templete_WindowsServer.json" `
-      -dnsLabelPrefix shiraipadress.eastus.cloudapp.azure.com
-      echo (Get-AzVm -ResourceGroupName ShiraStorageAccount-rg).name
+    deploymentScope: 'Resource Group'
+    subscriptionId: 'a8108c2b-496c-424d-8347-ecc8afb6384c'
+    action: 'Create Or Update Resource Group'
+    resourceGroupName: 'ShiraStorageAccount-rg'
+    location: 'East US'
+    templateLocation: 'URL of the file'
+    csmParametersFileLink: 'https://github.com/shiraZadok/AzureRmPipeline_MTC/blob/main/ARM_Templete_WindowsServer.json'
+    deploymentMode: 'Incremental'
