@@ -43,7 +43,7 @@
         },
         "adminUsername": {
             "type": "string"
-        }
+        },
         "adminPassword": {
             "type": "string"
         }
