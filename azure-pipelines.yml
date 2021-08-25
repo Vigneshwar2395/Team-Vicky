@@ -29,7 +29,6 @@ steps:
   inputs:
     targetType: 'inline'
     script: |
-      New-AzResourceGroup -Name ShiraStorageAccount-rg -Location "East US"
       New-AzResourceGroupDeployment 
       -ResourceGroupName ShiraStorageAccount-rg 
       -TemplateUri "https://github.com/shiraZadok/AzureRmPipeline_MTC/blob/main/ARM_Templete_WindowsServer.json" 
