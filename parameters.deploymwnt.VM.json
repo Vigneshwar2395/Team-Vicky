@@ -43,6 +43,8 @@
         },
         "adminUsername": {
             "value": "azureuser"
+        }"adminPassword": {
+            "value": "a1b2c3d4"
         }
     }
 }
