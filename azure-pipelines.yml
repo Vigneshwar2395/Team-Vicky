@@ -23,14 +23,17 @@ steps:
      #New-AzResourceGroupDeployment -Name Deployment-Create_the_first_storageaccount -ResourceGroupName ShiraStorageAccount-rg -TemplateFile 'Generally_Template_StorageAccount.json'}
 
 #Task 3
-- task: AzureResourceManagerTemplateDeployment@3
+#- task: AzureResourceManagerTemplateDeployment@3
+ # inputs:
+- task: PowerShell@2
   inputs:
-    deploymentScope: 'Resource Group'
-    azureResourceManagerConnection: 'MSEC_Candidates_Homeworks(a8108c2b-496c-424d-8347-ecc8afb6384c)'
-    action: 'Create Or Update Resource Group'
-    resourceGroupName: 'ShiraStorageAccount-rg'
-    location: 'East US'
-    templateLocation: 'URL of the file'
-    csmParametersFileLink: 'https://github.com/shiraZadok/AzureRmPipeline_MTC/blob/main/ARM_Templete_WindowsServer.json'
-    overrideParameters: 'adminUsername shira.zadok adminPassword shsz6457 -dnsNameForPublicIP shiraIPAdress '
-    deploymentMode: 'Incremental'
+    targetType: 'inline'
+    script: |
+      New-AzResourceGroup -Name ShiraStorageAccount-rg -Location "East US"
+      New-AzResourceGroupDeployment 
+      -ResourceGroupName ShiraStorageAccount-rg 
+      -TemplateUri "https://github.com/shiraZadok/AzureRmPipeline_MTC/blob/main/ARM_Templete_WindowsServer.json" 
+      -adminUsername MSEC_Candidates_Homeworks 
+      -adminPassword a8108c2b-496c-424d-8347-ecc8afb6384c 
+      -dnsLabelPrefix shiraipadress
+      (Get-AzVm -ResourceGroupName $resourceGroupName).name
