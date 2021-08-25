@@ -29,7 +29,7 @@ steps:
   inputs:
     targetType: 'inline'
     script: |
-     New-AzResourceGroupDeployment -Name Deployment-Create_the_first_VM -ResourceGroupName ShiraStorageAccount-rg -TemplateFile 'ARM_Templete_WindowsServer.json' -TemplateParameterFile 'parameters.deploymwnt.VM.json'
+     New-AzResourceGroupDeployment -Name Deployment-Create_the_first_VM -ResourceGroupName ShiraStorageAccount-rg -TemplateFile 'ARM_Templete_WindowsServer.json' -TemplateParameterFile 'parameters.deploymwnt.VM.json' -adminPassword 'a8108c2b-496c-424d-8347-ecc8afb6384c'
        #New-AzResourceGroupDeployment -ResourceGroupName ShiraStorageAccount-rg -TemplateFile 'ARM_Templete_WindowsServer.json' `
       #-adminUsername MSEC_Candidates_Homeworks `
       #-adminPassword a8108c2b-496c-424d-8347-ecc8afb6384c `
