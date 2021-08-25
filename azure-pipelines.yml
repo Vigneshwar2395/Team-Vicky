@@ -29,8 +29,8 @@ steps:
   inputs:
     targetType: 'inline'
     script: |
-      New-AzResourceGroupDeployment -ResourceGroupName ShiraStorageAccount-rg -TemplateFile 'ARM_Templete_WindowsServer.json' 
-      -adminUsername MSEC_Candidates_Homeworks 
-      -adminPassword a8108c2b-496c-424d-8347-ecc8afb6384c 
-      -dnsLabelPrefix shiraipadress
+      New-AzResourceGroupDeployment -ResourceGroupName ShiraStorageAccount-rg -TemplateFile 'ARM_Templete_WindowsServer.json' `
+      -adminUsername MSEC_Candidates_Homeworks `
+      -adminPassword a8108c2b-496c-424d-8347-ecc8afb6384c `
+      -dnsLabelPrefix shiraipadress `
       (Get-AzVm -ResourceGroupName ShiraStorageAccount-rg).name
