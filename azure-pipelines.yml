@@ -32,4 +32,5 @@ steps:
     location: 'East US'
     templateLocation: 'URL of the file'
     csmParametersFileLink: 'https://github.com/shiraZadok/AzureRmPipeline_MTC/blob/main/ARM_Templete_WindowsServer.json'
+    overrideParameters: 'adminUsername shira.zadok adminPassword shsz6457 -dnsNameForPublicIP shiraIPAdress '
     deploymentMode: 'Incremental'
