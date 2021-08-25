@@ -16,24 +16,28 @@ steps:
   inputs:
     targetType: 'inline'
     script: |
-     For ($i=0; $i -lt 1; $i++) {
-     New-AzResourceGroupDeployment -Name Deployment-Create_the_first_storageaccount -ResourceGroupName ShiraStorageAccount-rg -TemplateFile 'Generally_Template_StorageAccount.json'}
-
-     
-     #New-AzResourceGroupDeployment -Name Deployment-Create_the_first_storageaccount -ResourceGroupName ShiraStorageAccount-rg -TemplateFile 'ARM_Templete_StorageAccount.json' -TemplateParameterFile 'parameters_sa1.json'
-     #New-AzResourceGroupDeployment -Name Deployment-Create_the_second_storageaccount -ResourceGroupName ShiraStorageAccount-rg -TemplateFile 'ARM_Templete_StorageAccount.json' -TemplateParameterFile 'parameters_sa2.json'
+     New-AzResourceGroupDeployment -Name Deployment-Create_the_first_storageaccount -ResourceGroupName ShiraStorageAccount-rg -TemplateFile 'ARM_Templete_StorageAccount.json' -TemplateParameterFile 'parameters_sa1.json'
+     New-AzResourceGroupDeployment -Name Deployment-Create_the_second_storageaccount -ResourceGroupName ShiraStorageAccount-rg -TemplateFile 'ARM_Templete_StorageAccount.json' -TemplateParameterFile 'parameters_sa2.json'
+      #For ($i=0; $i -lt 1; $i++) {
+     #New-AzResourceGroupDeployment -Name Deployment-Create_the_first_storageaccount -ResourceGroupName ShiraStorageAccount-rg -TemplateFile 'Generally_Template_StorageAccount.json'}
 
 #Task 3
 - task: PowerShell@2
   inputs:
     targetType: 'inline'
     script: | 
-     #New-AzResourceGroup -Name ShiraStorageAccount-rg -Location "East US" -Force
-     #New-AzResourceGroupDeployment -Name Deployment-Create_the_first_VM -ResourceGroupName ShiraStorageAccount-rg -TemplateFile 'ARM_Templete_WindowsServer.json'
-     #New-AzResourceGroupDeployment `
-          #-ResourceGroupName ShiraStorageAccount-rg `
-          #-TemplateUri "https://github.com/shiraZadok/AzureRmPipeline_MTC/blob/main/ARM_Templete_WindowsServer.json" `
-          #-adminUsername shira.zadok `
-          #-adminPassword shsz6457 `
-          #-dnsLabelPrefix shiraipadress.eastus.cloudapp.azure.com
-          #(Get-AzVm -ResourceGroupName ShiraStorageAccount-rg).name
+     $resourceGroupName = Read-Host -Prompt "ShiraStorageAccount-rg"
+      $location = Read-Host -Prompt "East US"
+      $adminUsername = Read-Host -Prompt "shiraZadok"
+      $adminPassword = Read-Host -Prompt "shsz6457" -AsSecureString
+      $dnsLabelPrefix = Read-Host -Prompt "shiraipadress.eastus.cloudapp.azure.com"
+
+      New-AzResourceGroup -Name ShiraStorageAccount-rg -Location "East US" -Force
+      New-AzResourceGroupDeployment -Name Deployment-Create_the_first_VM -ResourceGroupName ShiraStorageAccount-rg -TemplateFile 'ARM_Templete_WindowsServer.json'
+      New-AzResourceGroupDeployment `
+      -ResourceGroupName ShiraStorageAccount-rg `
+      -TemplateUri "https://github.com/shiraZadok/AzureRmPipeline_MTC/blob/main/ARM_Templete_WindowsServer.json" `
+      -Username shira.zadok `
+      -Password shsz6457 `
+      -dnsLabelPrefix shiraipadress.eastus.cloudapp.azure.com
+      echo (Get-AzVm -ResourceGroupName ShiraStorageAccount-rg).name
