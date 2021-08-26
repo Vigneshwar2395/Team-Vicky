@@ -39,7 +39,7 @@ steps:
       $containerName = "firstcontainer"
        #New-AzStorageContainer -Name $containerName -Context $ctx -Permission blob
        For ($i=0; $i -lt 10; $i++) {
-      Set-AzStorageBlobContent -File "C:\Users\ShiraZadok\Microsoft\microsoft-1.png" `
+      Set-AzStorageBlobContent -File "https://github.com/shiraZadok/AzureRmPipeline_MTC" `
       -Container $containerName `
       -Blob "microsoft-1.png" `
       -Context $ctx -Force
