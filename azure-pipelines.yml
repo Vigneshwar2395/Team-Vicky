@@ -42,4 +42,3 @@ steps:
       -Container $containerName `
       -Blob "‏‏‏‏‏‏microsoft-3.png" `
       -Context $ctx
-      Get-AzStorageBlob -Container $ContainerName -Context $ctx | select Name
