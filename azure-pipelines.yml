@@ -36,5 +36,6 @@ steps:
     targetType: 'inline'
     script: |
       $childern= Get-ChildItem -Path C:\Users\ShiraZadok\Microsoft\100Blobs -Name
-      foreach ($x in $children) {Write-Output $x}
+      Write-Output $childern
+      Foreach-Object ($x in $children) {Write-Output $x}
 
