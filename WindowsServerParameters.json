@@ -1,0 +1,57 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "location": {
+            "value": "eastus"
+        },
+        "networkInterfaceName": {
+            "value": "shirawindowsserver618"
+        },
+        "subnetName": {
+            "value": "Subnet"
+        },
+        "virtualNetworkId": {
+            "value": "/subscriptions/a8108c2b-496c-424d-8347-ecc8afb6384c/resourceGroups/ShiraStorageAccount-rg/providers/Microsoft.Network/virtualNetworks/MyVNET"
+        },
+        "publicIpAddressName": {
+            "value": "ShiraWindowsServer-ip"
+        },
+        "publicIpAddressType": {
+            "value": "Static"
+        },
+        "publicIpAddressSku": {
+            "value": "Standard"
+        },
+        "virtualMachineName": {
+            "value": "ShiraWindowsServer"
+        },
+        "virtualMachineComputerName": {
+            "value": "ShiraWindowsSer"
+        },
+        "virtualMachineRG": {
+            "value": "ShiraStorageAccount-rg"
+        },
+        "osDiskType": {
+            "value": "Premium_LRS"
+        },
+        "virtualMachineSize": {
+            "value": "Standard_D2s_v3"
+        },
+        "adminUsername": {
+            "value": "shira.zadok"
+        },
+        "adminPassword": {
+            "value": null
+        },
+        "patchMode": {
+            "value": "AutomaticByOS"
+        },
+        "enableHotpatching": {
+            "value": false
+        },
+        "zone": {
+            "value": "1"
+        }
+    }
+}
