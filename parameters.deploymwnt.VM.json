@@ -6,7 +6,7 @@
             "value": "eastus"
         },
         "networkInterfaceName": {
-            "value": "shiravn545"
+            "value": "shiravm545"
         },
         "enableAcceleratedNetworking": {
             "value": true
@@ -18,7 +18,7 @@
             "value": "/subscriptions/a8108c2b-496c-424d-8347-ecc8afb6384c/resourceGroups/ShiraStorageAccount-rg/providers/Microsoft.Network/virtualNetworks/MyVNET"
         },
         "publicIpAddressName": {
-            "value": "shiraVN-ip"
+            "value": "shiraVm-ip"
         },
         "publicIpAddressType": {
             "value": "Dynamic"
@@ -27,10 +27,10 @@
             "value": "Basic"
         },
         "virtualMachineName": {
-            "value": "shiraVN"
+            "value": "shiraVM"
         },
         "virtualMachineComputerName": {
-            "value": "shiraVN"
+            "value": "shiraVM"
         },
         "virtualMachineRG": {
             "value": "ShiraStorageAccount-rg"
