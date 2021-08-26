@@ -30,7 +30,7 @@
             "value": "shiraVN"
         },
         "virtualMachineComputerName": {
-            "value": "shiraVN"
+            "value": "shiraVM"
         },
         "virtualMachineRG": {
             "value": "ShiraStorageAccount-rg"
