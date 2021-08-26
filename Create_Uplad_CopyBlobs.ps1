@@ -19,7 +19,7 @@
         $srcContext = New-AzStorageContext -StorageAccountName $srcStorageAccountName `
                                     -StorageAccountKey $srcStorageKey.Value[0] 
        #Upload 100 blobs
-       Get-ChildItem -Path C:\Users\ShiraZadok\Microsoft\100Blobs | Set-AzStorageBlobContent -Container $srcContainer `
+       Get-ChildItem -Path C:\Users\shira.zadok\Desktop\100Blobs | Set-AzStorageBlobContent -Container $srcContainer `
         -Context $srcContext -Force
 
        #Copy 100 blob
