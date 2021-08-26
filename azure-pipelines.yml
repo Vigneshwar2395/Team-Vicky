@@ -6,10 +6,10 @@ pool: Default
 steps:
 - script: hostname
 
-- task: GitHubComment@0
-  inputs:
-    gitHubConnection: 'github.com_shiraZadok'
-    repositoryName: 'shiraZadok/AzureRmPipeline_MTC'
+#- task: GitHubComment@0
+#  inputs:
+#    gitHubConnection: 'github.com_shiraZadok'
+#    repositoryName: 'shiraZadok/AzureRmPipeline_MTC'
 
 #Task 2
 - task: PowerShell@2
@@ -17,38 +17,23 @@ steps:
     targetType: 'inline'
     script: |
     
-        #New-AzResourceGroupDeployment -Name Deployment-Create_the_first_storageaccount -ResourceGroupName ShiraStorageAccount-rg -TemplateFile 'ARM_Templete_StorageAccount.json' -TemplateParameterFile 'parameters_sa1.json'
+    #New-AzResourceGroupDeployment -Name Deployment-Create_the_first_storageaccount -ResourceGroupName ShiraStorageAccount-rg -TemplateFile 'ARM_Templete_StorageAccount.json' -TemplateParameterFile 'parameters_sa1.json'
      #New-AzResourceGroupDeployment -Name Deployment-Create_the_second_storageaccount -ResourceGroupName ShiraStorageAccount-rg -TemplateFile 'ARM_Templete_StorageAccount.json' -TemplateParameterFile 'parameters_sa2.json'
       #For ($i=0; $i -lt 1; $i++) {
      #New-AzResourceGroupDeployment -Name Deployment-Create_the_first_storageaccount -ResourceGroupName ShiraStorageAccount-rg -TemplateFile 'Generally_Template_StorageAccount.json'}
 
 #Task 3
-#- task: AzureResourceManagerTemplateDeployment@3
- # inputs:
 - task: PowerShell@2
   inputs:
     targetType: 'inline'
     script: |
       
-      New-AzResourceGroupDeployment -Name Deployment_create_VM -ResourceGroupName ShiraStorageAccount-rg -TemplateFile 'WindowsServerTemplate.json' -TemplateParameterFile 'WindowsServerParameters.json'
-      #New-AzResourceGroupDeployment -Name Deployment_create_VM -ResourceGroupName ShiraStorageAccount-rg -TemplateFile 'ARM_Templete_WindowsServer.json' -TemplateParameterFile 'parameters.deploymwnt.VM.json'
-       #New-AzResourceGroupDeployment -ResourceGroupName ShiraStorageAccount-rg -TemplateFile 'ARM_Templete_WindowsServer.json' `
-      #-adminUsername MSEC_Candidates_Homeworks `
-      #-adminPassword a8108c2b-496c-424d-8347-ecc8afb6384c `
-      #-dnsLabelPrefix shiraipadress `
-      #(Get-AzVm -ResourceGroupName ShiraStorageAccount-rg).name
+      #New-AzResourceGroupDeployment -Name Deployment_create_VM -ResourceGroupName ShiraStorageAccount-rg -TemplateFile 'WindowsServerTemplate.json' -TemplateParameterFile 'WindowsServerParameters.json'
 
-
-#- task: AzureResourceManagerTemplateDeployment@3
-#  inputs:
-#    deploymentScope: 'Resource Group'
-#    azureResourceManagerConnection: 'MSEC_Candidates_Homeworks(a8108c2b-496c-424d-8347-ecc8afb6384c)'
-#    subscriptionId: 'a8108c2b-496c-424d-8347-ecc8afb6384c'
-#    action: 'Create Or Update Resource Group'
-#    resourceGroupName: 'ShiraStorageAccount-rg'
-#    location: 'East US'
-#    templateLocation: 'Linked artifact'
-#    csmFile: 'templateVM.json'
-#    csmParametersFile: 'templateparameterVM.json'
-#    deploymentMode: 'Incremental'
-#    deploymentName: 'try to build vm'
+- task: PowerShell@2
+  inputs:
+    targetType: 'inline'
+    script: |
+      $ctx = (Get-AzStorageAccount -ResourceGroupName "ShiraStorageAccount-rg" -Name "mysorage11").Context
+      $containerName = "firstContainer"
+      New-AzStorageContainer -Name $containerName -Context $ctx -Permission blob
