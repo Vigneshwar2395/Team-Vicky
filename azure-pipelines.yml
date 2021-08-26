@@ -35,10 +35,10 @@ steps:
   inputs:
     targetType: 'inline'
     script: |
-     Invoke-AzVMRunCommand `
-     -ResourceGroupName 'ShiraStorageAccount-rg' `
-     -Name ShiraWindowsServer `
-     -CommandId 'RunPowerShellScript' `
-     -ScriptPath \.UpladAndCopyBlobs.ps1 
+      Invoke-AzVMRunCommand `
+      -ResourceGroupName 'ShiraStorageAccount-rg' `
+      -Name ShiraWindowsServer `
+      -CommandId 'RunPowerShellScript' `
+      -ScriptPath Create_Uplad_CopyBlobs.ps1
 
 
