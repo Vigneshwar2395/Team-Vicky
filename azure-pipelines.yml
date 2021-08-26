@@ -35,6 +35,29 @@ steps:
   inputs:
     targetType: 'inline'
     script: |
-      $childern= Get-ChildItem -Path C:\Users\ShiraZadok\Microsoft\100Blobs |
-      ForEach-Object -Process {Write-Output $_.Name}
+      $ResourceGroupName= "ShiraStorageAccount-rg"
+      $srcStorageAccountName = "mysorage11"
+      $destStorageAccountName = "mysorage22"
+
+      $srcStorageAccount = (Get-AzStorageAccount -ResourceGroupName $ResourceGroupName -Name $srcStorageAccountName).Context
+      $destStorageAccount = (Get-AzStorageAccount -ResourceGroupName $ResourceGroupName -Name $destStorageAccountName).Context
+      $srcContainer = "sourcecontainer"
+      $destContainer = "destcontainer"
+
+       #Create source and destination container
+      #New-AzStorageContainer -Name $srcContainer -Context $srcStorageAccount -Permission blob
+      #New-AzStorageContainer -Name $destContainer -Context $destStorageAccount -Permission blob
+
+      $srcStorageKey = Get-AzStorageAccountKey -Name $srcStorageAccountName `
+                                         -ResourceGroupName $ResourceGroupName 
+      $destStorageKey = Get-AzStorageAccountKey -Name $destStorageAccountName `
+                                          -ResourceGroupName $ResourceGroupName
+
+      $srcContext = New-AzStorageContext -StorageAccountName $srcStorageAccountName `
+                                   -StorageAccountKey $srcStorageKey.Value[0]
+      $destContext = New-AzStorageContext -StorageAccountName $destStorageAccountName `
+                                    -StorageAccountKey $destStorageKey.Value[0]
+      #$blobName= "100Blobs"
+      Get-ChildItem -Path C:\Users\ShiraZadok\Microsoft\100Blobs | Set-AzStorageBlobContent -Container $srcContainer
+
 
