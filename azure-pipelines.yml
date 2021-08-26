@@ -42,4 +42,4 @@ steps:
       -Container $containerName `
       -Blob "microsoft-1.png" `
       -Context $ctx
-      Get-AzStorageBlob -Container $ContainerName -Context $ctx | select Name
+      Get-AzStorageBlob -Container $ContainerName -Context $ctx | select Name -Force
