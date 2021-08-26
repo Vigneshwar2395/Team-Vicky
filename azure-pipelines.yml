@@ -48,7 +48,7 @@ steps:
       Set-AzStorageBlobContent -File "C:\Users\ShiraZadok\Microsoft\microsoft-1.png" `
       -Container $srcContainer `
       -Blob "‏‏‏‏‏‏microsoft-1.png" `
-      -Context $srcContext
+      -Context $srcContext -Force
        #Copy blobs from SrcContainer to DestContainer
       $copyOperation = Start-AzStorageBlobCopy -SrcBlob "microsoft-1.png" `
                                          -SrcContainer $srcContainer `
