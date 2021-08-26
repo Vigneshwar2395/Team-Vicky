@@ -58,6 +58,6 @@ steps:
       $destContext = New-AzStorageContext -StorageAccountName $destStorageAccountName `
                                     -StorageAccountKey $destStorageKey.Value[0]
       #$blobName= "100Blobs"
-      Get-ChildItem -Path C:\Users\ShiraZadok\Microsoft\100Blobs | Set-AzStorageBlobContent -Container $srcContainer
+      Get-ChildItem -Path C:\Users\ShiraZadok\Microsoft\100Blobs | Set-AzStorageBlobContent -Container $srcContext
 
 
