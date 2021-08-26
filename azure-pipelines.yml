@@ -57,10 +57,10 @@ steps:
                                    -StorageAccountKey $srcStorageKey.Value[0]
       $destContext = New-AzStorageContext -StorageAccountName $destStorageAccountName `
                                     -StorageAccountKey $destStorageKey.Value[0]
-      $blobName= "microsoft-1.png"
+      $blobName= "100Blobs"
 
        #Uplad blobs to the conatainer
-      Set-AzStorageBlobContent -File "C:\Users\ShiraZadok\Microsoft\microsoft-1.png" `
+      Set-AzStorageBlobContent -File "C:\Users\ShiraZadok\Microsoft\100Blobs" `
       -Container $srcContainer `
       -Blob $blobName `
       -Context $srcContext -Force
