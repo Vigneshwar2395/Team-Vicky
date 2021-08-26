@@ -39,14 +39,14 @@ steps:
       $srcStorageAccountName = "mysorage11"
       $destStorageAccountName = "mysorage22"
 
-      $srcStorageAccount = (Get-AzStorageAccount -ResourceGroupName $ResourceGroupName -Name $srcStorageAccountName).Context
-      $destStorageAccount = (Get-AzStorageAccount -ResourceGroupName $ResourceGroupName -Name $destStorageAccountName).Context
+      $srcStorageAccountContex = (Get-AzStorageAccount -ResourceGroupName $ResourceGroupName -Name $srcStorageAccountName).Context
+      $destStorageAccountContex = (Get-AzStorageAccount -ResourceGroupName $ResourceGroupName -Name $destStorageAccountName).Context
       $srcContainer = "sourcecontainer"
       $destContainer = "destcontainer"
 
        #Create source and destination container
-      #New-AzStorageContainer -Name $srcContainer -Context $srcStorageAccount -Permission blob
-      #New-AzStorageContainer -Name $destContainer -Context $destStorageAccount -Permission blob
+      #New-AzStorageContainer -Name $srcContainer -Context $srcStorageAccountContex -Permission blob
+      #New-AzStorageContainer -Name $destContainer -Context $destStorageAccountContex -Permission blob
 
       $srcStorageKey = Get-AzStorageAccountKey -Name $srcStorageAccountName `
                                          -ResourceGroupName $ResourceGroupName 
@@ -58,6 +58,6 @@ steps:
       $destContext = New-AzStorageContext -StorageAccountName $destStorageAccountName `
                                     -StorageAccountKey $destStorageKey.Value[0]
       #$blobName= "100Blobs"
-      Get-ChildItem -Path C:\Users\ShiraZadok\Microsoft\100Blobs | Set-AzStorageBlobContent -Container $srcContext
+      Get-ChildItem -Path C:\Users\ShiraZadok\Microsoft\100Blobs | Set-AzStorageBlobContent -Container $srcStorageAccountContex
 
 
