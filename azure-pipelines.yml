@@ -35,10 +35,24 @@ steps:
   inputs:
     targetType: 'inline'
     script: |
-      $ctx = (Get-AzStorageAccount -ResourceGroupName "ShiraStorageAccount-rg" -Name "mysorage11").Context
-      $containerName = "firstcontainer"
-       #New-AzStorageContainer -Name $containerName -Context $ctx -Permission blob
+      $srcContext = (Get-AzStorageAccount -ResourceGroupName "ShiraStorageAccount-rg" -Name "mysorage11").Context
+      $destContext = (Get-AzStorageAccount -ResourceGroupName "ShiraStorageAccount-rg" -Name "mysorage22").Context
+      $srcContainer = "sourcecontainer"
+      $destContainer = "destcontainer"
+
+       #Create source and destination container
+      New-AzStorageContainer -Name $srcContainer -Context $srcContext -Permission blob
+      New-AzStorageContainer -Name $destContainer -Context $destContext -Permission blob
+
+       #Uplad blobs to the conatainer
       Set-AzStorageBlobContent -File "C:\Users\ShiraZadok\Microsoft\microsoft-1.png" `
-      -Container $containerName `
+      -Container $srcContainer `
       -Blob "‏‏‏‏‏‏microsoft-1.png" `
-      -Context $ctx
+      -Context $srcContext
+       #Copy blobs from SrcContainer to DestContainer
+      $copyOperation = Start-AzStorageBlobCopy -SrcBlob $blobName `
+                                         -SrcContainer $srcContainer `
+                                         -Context $srcContext `
+                                         -DestBlob "microsoft-1.png" `
+                                         -DestContainer $destContainer `
+                                         -destContext $destContext
