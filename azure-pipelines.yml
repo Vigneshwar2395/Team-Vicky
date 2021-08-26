@@ -36,8 +36,8 @@ steps:
     targetType: 'inline'
     script: |
     
-      #$ResourceGroupName= "ShiraStorageAccount-rg"
-      #$srcStorageAccountName = "mysorage11"
+      $ResourceGroupName= "ShiraStorageAccount-rg"
+      $srcStorageAccountName = "mysorage11"
       #$destStorageAccountName = "mysorage22"
 
       #$srcStorageAccountContex = (Get-AzStorageAccount -ResourceGroupName $ResourceGroupName -Name $srcStorageAccountName).Context
