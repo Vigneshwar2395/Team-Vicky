@@ -123,6 +123,7 @@
                 },
                 "osProfile": {
                     "computerName": "[parameters('virtualMachineComputerName')]",
+                    "adminPassword": "[parameters('adminUsername')]",
                     "adminUsername": "[parameters('adminUsername')]",
                     "linuxConfiguration": {
                         "disablePasswordAuthentication": false
