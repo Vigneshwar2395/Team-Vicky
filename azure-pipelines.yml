@@ -57,10 +57,10 @@ steps:
                                    -StorageAccountKey $srcStorageKey.Value[0]
       $destContext = New-AzStorageContext -StorageAccountName $destStorageAccountName `
                                     -StorageAccountKey $destStorageKey.Value[0]
-      $blobName= "100Blobs"
+      $blobName= "100Blobs.rar"
 
        #Uplad blobs to the conatainer
-      Set-AzStorageBlobContent -File "C:\Users\ShiraZadok\Microsoft\100Blobs" `
+      Set-AzStorageBlobContent -File "C:\Users\ShiraZadok\Microsoft\100Blobs.rar" `
       -Container $srcContainer `
       -Blob $blobName `
       -Context $srcContext -Force
