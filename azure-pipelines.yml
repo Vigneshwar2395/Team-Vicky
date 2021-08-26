@@ -38,7 +38,7 @@ steps:
       $ctx = (Get-AzStorageAccount -ResourceGroupName "ShiraStorageAccount-rg" -Name "mysorage11").Context
       $containerName = "firstcontainer"
        #New-AzStorageContainer -Name $containerName -Context $ctx -Permission blob
-       For ($i=0; $i -lt 1; $i++) {
+       For ($i=0; $i -lt 10; $i++) {
       Set-AzStorageBlobContent -File "C:\Users\ShiraZadok\Microsoft\microsoft-1.png" `
       -Container $containerName `
       -Blob "microsoft-1.png" `
