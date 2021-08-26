@@ -48,13 +48,13 @@ steps:
       Set-AzStorageBlobContent -File "C:\Users\ShiraZadok\Microsoft\microsoft-1.png" `
       -Container $srcContainer `
       -Blob "‏‏‏‏‏‏microsoft-1.png" `
-      -Context $srcContext 
+      -Context $srcContext -Force
        #azcopy copy 'https://mysorage11.blob.core.windows.net/sourcecontainersp=r&st=2021-08-26T16:30:07Z&se=2021-08-27T00:30:07Z&spr=https&sv=2020-08-04&sr=b&sig=0AxUYlrfSH57HXFNxePlsbZB0hPmdl%2BVq%2B%2Flw9GE10g%3D' 'https://mysorage22.blob.core.windows.net/destcontainer' --recursive
 
        #Copy blobs from SrcContainer to DestContainer
-       $copyOperation = Start-AzStorageBlobCopy -SrcBlob "microsoft-1.png" `
+       $copyOperation = Start-AzStorageBlobCopy -SrcBlob 'microsoft-1.png `
                                          -SrcContainer $srcContainer `
                                          -Context $srcContext `
-                                         -DestBlob "microsoft-1.png" `
+                                         -DestBlob 'microsoft-1.png' `
                                          -DestContainer $destContainer `
                                          -destContext $destContext
