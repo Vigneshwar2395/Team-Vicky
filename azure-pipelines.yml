@@ -35,26 +35,41 @@ steps:
   inputs:
     targetType: 'inline'
     script: |
-      $srcContext = (Get-AzStorageAccount -ResourceGroupName "ShiraStorageAccount-rg" -Name "mysorage11").Context
-      $destContext = (Get-AzStorageAccount -ResourceGroupName "ShiraStorageAccount-rg" -Name "mysorage22").Context
+      $ResourceGroupName= "ShiraStorageAccount-rg"
+      $srcStorageAccountName = "mysorage11"
+      $destStorageAccountName = "mysorage22"
+
+      $srcStorageAccount = (Get-AzStorageAccount -ResourceGroupName $ResourceGroupName -Name $srcStorageAccountName).Context
+      $destStorageAccount = (Get-AzStorageAccount -ResourceGroupName $ResourceGroupName -Name $destStorageAccountName).Context
       $srcContainer = "sourcecontainer"
       $destContainer = "destcontainer"
 
        #Create source and destination container
-      #New-AzStorageContainer -Name $srcContainer -Context $srcContext -Permission blob
-      #New-AzStorageContainer -Name $destContainer -Context $destContext -Permission blob
+      #New-AzStorageContainer -Name $srcContainer -Context $srcStorageAccount -Permission blob
+      #New-AzStorageContainer -Name $destContainer -Context $destStorageAccount -Permission blob
+
+      $srcStorageKey = Get-AzStorageAccountKey -Name $srcStorageAccountName `
+                                         -ResourceGroupName $ResourceGroupName 
+      $destStorageKey = Get-AzStorageAccountKey -Name $destStorageAccountName `
+                                          -ResourceGroupName $ResourceGroupName
+
+      $srcContext = New-AzStorageContext -StorageAccountName $srcStorageAccountName `
+                                   -StorageAccountKey $srcStorageKey.Value[0]
+      $destContext = New-AzStorageContext -StorageAccountName $destStorageAccountName `
+                                    -StorageAccountKey $destStorageKey.Value[0]
+      $blobName= "microsoft-1.png"
 
        #Uplad blobs to the conatainer
       Set-AzStorageBlobContent -File "C:\Users\ShiraZadok\Microsoft\microsoft-1.png" `
       -Container $srcContainer `
-      -Blob "‏‏‏‏‏‏microsoft-1.png" `
+      -Blob $blobName `
       -Context $srcContext -Force
        #azcopy copy 'https://mysorage11.blob.core.windows.net/sourcecontainersp=r&st=2021-08-26T16:30:07Z&se=2021-08-27T00:30:07Z&spr=https&sv=2020-08-04&sr=b&sig=0AxUYlrfSH57HXFNxePlsbZB0hPmdl%2BVq%2B%2Flw9GE10g%3D' 'https://mysorage22.blob.core.windows.net/destcontainer' --recursive
 
        #Copy blobs from SrcContainer to DestContainer
-       $copyOperation = Start-AzStorageBlobCopy -SrcBlob 'microsoft-1.png' `
+       $copyOperation = Start-AzStorageBlobCopy -SrcBlob $blobName `
                                          -SrcContainer $srcContainer `
                                          -Context $srcContext `
-                                         -DestBlob 'microsoft-1.png' `
+                                         -DestBlob $blobName `
                                          -DestContainer $destContainer `
                                          -destContext $destContext
