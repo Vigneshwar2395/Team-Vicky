@@ -60,5 +60,7 @@ steps:
       #$blobName= "100Blobs"
       Get-ChildItem -Path C:\Users\ShiraZadok\Microsoft\100Blobs | Set-AzStorageBlobContent -Container $srcContainer `
       -Context $srcContext -Force
+       Copy-Item  -Destination "https://ms.portal.azure.com/#blade/Microsoft_Azure_Storage/ContainerMenuBlade/overview/storageAccountId/%2Fsubscriptions%2Fa8108c2b-496c-424d-8347-ecc8afb6384c%2FresourceGroups%2FShiraStorageAccount-rg%2Fproviders%2FMicrosoft.Storage%2FstorageAccounts%2Fmysorage22/path/destcontainer/etag/%220x8D968A66C9DBEFA%22/defaultEncryptionScope/%24account-encryption-key/denyEncryptionScopeOverride//defaultId//publicAccessVal/Blob" `
+       -Container $srcContainer
 
 
