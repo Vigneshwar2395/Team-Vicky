@@ -49,10 +49,12 @@ steps:
       -Container $srcContainer `
       -Blob "‏‏‏‏‏‏microsoft-1.png" `
       -Context $srcContext -Force
+      azcopy copy 'https://mysorage11.blob.core.windows.net/sourcecontainer?sv=2020-08-04&ss=bfqt&srt=c&sp=rwdlacuptfx&se=2021-09-25T23:56:47Z&st=2021-08-26T15:56:47Z&spr=https&sig=dO5rexAb%2B94QiODamd5gL8C0O6Lnfn5ye%2FwVYih7JvI%3D' 'https://mysorage22.blob.core.windows.net/destcontainer' --recursive
+
        #Copy blobs from SrcContainer to DestContainer
-      $copyOperation = Start-AzStorageBlobCopy -SrcBlob "microsoft-1.png" `
-                                         -SrcContainer $srcContainer `
-                                         -Context $srcContext `
-                                         -DestBlob "microsoft-1.png" `
-                                         -DestContainer $destContainer `
-                                         -destContext $destContext
+       #$copyOperation = Start-AzStorageBlobCopy -SrcBlob "microsoft-1.png" `
+       #                                  -SrcContainer $srcContainer `
+       #                                  -Context $srcContext `
+       #                                  -DestBlob "microsoft-1.png" `
+       #                                  -DestContainer $destContainer `
+       #                                  -destContext $destContext
