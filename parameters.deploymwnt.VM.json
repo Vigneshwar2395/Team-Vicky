@@ -44,7 +44,7 @@
         "adminUsername": {
             "value": "MSEC_Candidates_Homeworks"
         },
-       "adminPassword": {
+        "adminPassword": {
             "value": "123456"
         }
     }
