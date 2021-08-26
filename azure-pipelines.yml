@@ -41,8 +41,8 @@ steps:
       $destContainer = "destcontainer"
 
        #Create source and destination container
-      New-AzStorageContainer -Name $srcContainer -Context $srcContext -Permission blob
-      New-AzStorageContainer -Name $destContainer -Context $destContext -Permission blob
+      #New-AzStorageContainer -Name $srcContainer -Context $srcContext -Permission blob
+      #New-AzStorageContainer -Name $destContainer -Context $destContext -Permission blob
 
        #Uplad blobs to the conatainer
       Set-AzStorageBlobContent -File "C:\Users\ShiraZadok\Microsoft\microsoft-1.png" `
