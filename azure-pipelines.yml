@@ -38,6 +38,6 @@ steps:
      Invoke-AzVMRunCommand -ResourceGroupName 'ShiraStorageAccount-rg' `
      -Name 'ShiraWindowsServer' `
      -CommandId 'RunPowerShellScript' `
-     -ScriptPath 'https://github.com/shiraZadok/AzureRmPipeline_MTC/blob/main/UpladAndCopyBlobs.ps1' 
+     -ScriptPath 'UpladAndCopyBlobs.ps1' 
 
 
