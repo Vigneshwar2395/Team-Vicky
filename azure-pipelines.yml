@@ -35,5 +35,5 @@ steps:
     targetType: 'inline'
     script: |
       $ctx = (Get-AzStorageAccount -ResourceGroupName "ShiraStorageAccount-rg" -Name "mysorage11").Context
-      $containerName = "firstContainer"
+      $containerName = "firstcontainer"
       New-AzStorageContainer -Name $containerName -Context $ctx -Permission blob
