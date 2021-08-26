@@ -42,5 +42,5 @@ steps:
       Set-AzStorageBlobContent -File "C:\Users\ShiraZadok\Microsoft\microsoft-1.png" `
       -Container $containerName `
       -Blob "microsoft-1.png" `
-      -Context $ctx 
+      -Context $ctx -Force
       }
