@@ -1,6 +1,14 @@
       $ResourceGroupName= "ShiraStorageAccount-rg"
       $srcStorageAccountName = "mysorage11"
+      $srcStorageAccountContext = (Get-AzStorageAccount -ResourceGroupName $ResourceGroupName -Name $srcStorageAccountName).Context
+      $destStorageAccountContext = (Get-AzStorageAccount -ResourceGroupName $ResourceGroupName -Name $destStorageAccountName).Context
       $srcContainer = "sourcecontainer"
+      $destContainer = "destcontainer"
+
+      #Create source and destination container
+      New-AzStorageContainer -Name $srcContainer -Context $srcStorageAccountContext -Permission blob
+      New-AzStorageContainer -Name $destContainer -Context $destStorageAccountContext -Permission blob
+      
       $srcStorageKey = Get-AzStorageAccountKey -Name $srcStorageAccountName `
                                          -ResourceGroupName $ResourceGroupName 
       $srcContext = New-AzStorageContext -StorageAccountName $srcStorageAccountName `
