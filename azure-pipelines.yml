@@ -50,7 +50,7 @@ steps:
       -Blob "‏‏‏‏‏‏microsoft-1.png" `
       -Context $srcContext
        #Copy blobs from SrcContainer to DestContainer
-      $copyOperation = Start-AzStorageBlobCopy -SrcBlob $blobName `
+      $copyOperation = Start-AzStorageBlobCopy -SrcBlob "microsoft-1.png" `
                                          -SrcContainer $srcContainer `
                                          -Context $srcContext `
                                          -DestBlob "microsoft-1.png" `
