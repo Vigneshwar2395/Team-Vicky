@@ -2,6 +2,12 @@
 	$SubscriptionID= "a8108c2b-496c-424d-8347-ecc8afb6384c"
 		
 	Set-AzContext -Subscription $SubscriptionID
+
+	Disable-AzContextAutosave –Scope Process
+	$Conn = Get-AutomationConnection -Name AzureRunAsConnection
+	Connect-AzAccount -ServicePrincipal -Tenant $Conn.TenantID `
+	-ApplicationId $Conn.ApplicationID -CertificateThumbprint $Conn.CertificateThumbprint
+	$AzureContext = Select-AzSubscription -SubscriptionId $Conn.SubscriptionID
 		
 	$ResourceGroupName= "ShiraStorageAccount-rg"
         $srcStorageAccountName = "shirastorageaccount0a"
