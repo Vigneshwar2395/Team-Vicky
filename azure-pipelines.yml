@@ -11,6 +11,7 @@ steps:
 #    gitHubConnection: 'github.com_shiraZadok'
 #    repositoryName: 'shiraZadok/AzureRmPipeline_MTC'
 
+
 #Task 2
 #Create an ARM template for storage account
 #And create 2 storage accounts
@@ -18,25 +19,18 @@ steps:
   inputs:
     targetType: 'inline'
     script: |
-    
-    #New-AzResourceGroupDeployment `
-    -Name Deployment-Create_the_first_storageaccount `
-    -ResourceGroupName 'ShiraStorageAccount-rg' `
-    -TemplateFile 'ARM_Templete_StorageAccount.json' `
-    -TemplateParameterFile 'parameters_sa1.json'
+      #New-AzResourceGroupDeployment `
+      -Name Deployment-Create_the_first_storageaccount `
+      -ResourceGroupName 'ShiraStorageAccount-rg' `
+      -TemplateFile 'ARM_Templete_StorageAccount.json' `
+      -TemplateParameterFile 'parameters_sa1.json'
 
-    New-AzResourceGroupDeployment `
-     -Name Deployment-Create_the_second_storageaccount `
-     -ResourceGroupName 'ShiraStorageAccount-rg' `
-     -TemplateFile 'ARM_Templete_StorageAccount.json' `
-     -TemplateParameterFile 'parameters_sa2.json'
+      New-AzResourceGroupDeployment `
+      -Name Deployment-Create_the_second_storageaccount `
+      -ResourceGroupName 'ShiraStorageAccount-rg' `
+      -TemplateFile 'ARM_Templete_StorageAccount.json' `
+      -TemplateParameterFile 'parameters_sa2.json'
 
-     #For ($i=0; $i -lt 1; $i++) {
-    #New-AzResourceGroupDeployment `
-    #-Name Deployment-Create_the_first_storageaccount `
-      #-ResourceGroupName ShiraStorageAccount-rg `
-      #-TemplateFile 'Generally_Template_StorageAccount.json'
-      #}
 
 #Task 3
 #Create an ARM template for a Windows server
