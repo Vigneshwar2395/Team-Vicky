@@ -21,13 +21,13 @@ steps:
     
     #New-AzResourceGroupDeployment `
     -Name Deployment-Create_the_first_storageaccount `
-    -ResourceGroupName ShiraStorageAccount-rg `
+    -ResourceGroupName 'ShiraStorageAccount-rg' `
     -TemplateFile 'ARM_Templete_StorageAccount.json' `
     -TemplateParameterFile 'parameters_sa1.json'
 
     New-AzResourceGroupDeployment `
      -Name Deployment-Create_the_second_storageaccount `
-     -ResourceGroupName ShiraStorageAccount-rg `
+     -ResourceGroupName 'ShiraStorageAccount-rg' `
      -TemplateFile 'ARM_Templete_StorageAccount.json' `
      -TemplateParameterFile 'parameters_sa2.json'
 
