@@ -2,7 +2,10 @@
 	$SubscriptionID= "a8108c2b-496c-424d-8347-ecc8afb6384c"
 		
 	Set-AzContext -Subscription $SubscriptionID
-
+	
+	Clear-AzContext
+	Connect-AzAccount
+	
 	$ConnectionAssetName = "AzureRunAsConnection"
 	$ConnectionFieldValues = @{"ApplicationId" = $Application.ApplicationId; "TenantId" = $TenantID.TenantId; "CertificateThumbprint" = $Cert.Thumbprint; "SubscriptionId" = $SubscriptionId}
 	New-AzureRmAutomationConnection -ResourceGroupName "ShiraStorageAccount-rg" -AutomationAccountName "shiraAutomationAccount" -Name $ConnectionAssetName -ConnectionTypeName AzureServicePrincipal -ConnectionFieldValues $ConnectionFieldValues 
