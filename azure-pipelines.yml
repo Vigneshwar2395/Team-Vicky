@@ -7,7 +7,9 @@ pool: Default
 #Global Variables
 variables:
  myResourceGroupName: ShiraStorageAccount-rg
+ subscriptionID: "a8108c2b-496c-424d-8347-ecc8afb6384c"
 
+#Connect to the self-hosted agents
 steps:
 - script: hostname
 
@@ -30,7 +32,7 @@ steps:
       -TemplateParameterFile 'parameters_sa1.json'
 
       New-AzResourceGroupDeployment -Name Deployment_Create_storageaccount_B `
-      -ResourceGroupName 'ShiraStorageAccount-rg' `
+      -ResourceGroupName $(myResourceGroupName) `
       -TemplateFile 'ARM_Templete_StorageAccount.json' `
       -TemplateParameterFile 'parameters_sa2.json'
 
@@ -44,7 +46,7 @@ steps:
       
       #New-AzResourceGroupDeployment `
       #-Name Deployment_create_VM `
-      #-ResourceGroupName ShiraStorageAccount-rg `
+      #-ResourceGroupName $(myResourceGroupName) `
       #-TemplateFile 'WindowsServerTemplate.json' `
       #-TemplateParameterFile 'WindowsServerParameters.json'
 
@@ -55,17 +57,16 @@ steps:
   inputs:
     targetType: 'inline'
     script: |
-      $SubscriptionID= "a8108c2b-496c-424d-8347-ecc8afb6384c"
-      Set-AzContext -Subscription $SubscriptionID
+      Set-AzContext -Subscription $(subscriptionID)
       Invoke-AzVMRunCommand `
-       -ResourceGroupName 'ShiraStorageAccount-rg' `
+       -ResourceGroupName $(myResourceGroupName) `
        -Name ShiraWindowsServer `
        -CommandId 'RunPowerShellScript' `
        -ScriptPath Create_Uplad_CopyBlobs.ps1
 
 #- task: AzureMonitorAlerts@0
 #  inputs:
-#    ResourceGroupName: 'ShiraStorageAccount-rg'
+#    ResourceGroupName: $(myResourceGroupName)
 #    ResourceType: 'Microsoft.Storage/storageAccounts'
 #    ResourceName: 
 
