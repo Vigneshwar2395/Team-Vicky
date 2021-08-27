@@ -24,4 +24,4 @@
       -Context $srcContext -Force
 
       #Copy 100 blob
-      azcopy copy "https://mysorage11.blob.core.windows.net/sourcecontainer?sv=2020-08-04&ss=bfqt&srt=co&sp=rwdlacuptfx&se=2021-09-10T04:03:56Z&st=2021-08-26T20:03:56Z&spr=https&sig=f4o4yp8lW8nTmwk9rI6hH6aJpp81DkW%2FoyEC1x7i8mU%3D" "https://mysorage22.blob.core.windows.net/destcontainer?sv=2020-08-04&ss=bfqt&srt=co&sp=rwdlacuptfx&se=2021-09-10T04:05:44Z&st=2021-08-26T20:05:44Z&spr=https&sig=lRf8nc%2FJnoX%2BAzGQBzVIXsmcRZggPWO2RCoSzYIVOjE%3D" --recursive
+      #azcopy copy "https://mysorage11.blob.core.windows.net/sourcecontainer?sv=2020-08-04&ss=bfqt&srt=co&sp=rwdlacuptfx&se=2021-09-10T04:03:56Z&st=2021-08-26T20:03:56Z&spr=https&sig=f4o4yp8lW8nTmwk9rI6hH6aJpp81DkW%2FoyEC1x7i8mU%3D" "https://mysorage22.blob.core.windows.net/destcontainer?sv=2020-08-04&ss=bfqt&srt=co&sp=rwdlacuptfx&se=2021-09-10T04:05:44Z&st=2021-08-26T20:05:44Z&spr=https&sig=lRf8nc%2FJnoX%2BAzGQBzVIXsmcRZggPWO2RCoSzYIVOjE%3D" --recursive
