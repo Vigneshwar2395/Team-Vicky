@@ -67,12 +67,12 @@ steps:
        
        if ($result.value.Message -like '*error*') 
         {  
-         Write-Output "Failed. An error occurred: `n $($result.value.Message)" | Out-File -Filepath C:\OutputLog.txt -Append
+         Write-Output "Failed. An error occurred: `n $($result.value.Message)" | Out-File -Filepath C:\OutputLog.txt -Append -Force
          throw $($result.value.Message)        
         }
         else
         {
-          Write-Output "Success" | Out-File -Filepath C:\OutputLog.txt -Append
+          Write-Output "Success" | Out-File -Filepath C:\OutputLog.txt -Append -Force
         }
 
         
