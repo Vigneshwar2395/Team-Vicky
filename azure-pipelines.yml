@@ -19,8 +19,6 @@ steps:
   inputs:
     targetType: 'inline'
     script: |
-      $SubscriptionID= "a8108c2b-496c-424d-8347-ecc8afb6384c"
-      Set-AzContext -Subscription $SubscriptionID
       New-AzResourceGroupDeployment -Name Deployment_Create_storageaccount_A `
       -ResourceGroupName 'ShiraStorageAccount-rg' `
       -TemplateFile 'ARM_Templete_StorageAccount.json' `
