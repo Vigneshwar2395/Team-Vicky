@@ -20,16 +20,16 @@ steps:
     script: |
     
     #New-AzResourceGroupDeployment `
-    #-Name Deployment-Create_the_first_storageaccount `
-    #-ResourceGroupName ShiraStorageAccount-rg `
-    #-TemplateFile 'ARM_Templete_StorageAccount.json' `
-    #-TemplateParameterFile 'parameters_sa1.json'
+    -Name Deployment-Create_the_first_storageaccount `
+    -ResourceGroupName ShiraStorageAccount-rg `
+    -TemplateFile 'ARM_Templete_StorageAccount.json' `
+    -TemplateParameterFile 'parameters_sa1.json'
 
-    #New-AzResourceGroupDeployment `
-    # -Name Deployment-Create_the_second_storageaccount `
-    # -ResourceGroupName ShiraStorageAccount-rg `
-    # -TemplateFile 'ARM_Templete_StorageAccount.json' `
-    # -TemplateParameterFile 'parameters_sa2.json'
+    New-AzResourceGroupDeployment `
+     -Name Deployment-Create_the_second_storageaccount `
+     -ResourceGroupName ShiraStorageAccount-rg `
+     -TemplateFile 'ARM_Templete_StorageAccount.json' `
+     -TemplateParameterFile 'parameters_sa2.json'
 
       #For ($i=0; $i -lt 1; $i++) {
      #New-AzResourceGroupDeployment `
@@ -66,4 +66,9 @@ steps:
        -CommandId 'RunPowerShellScript' `
        -ScriptPath Create_Uplad_CopyBlobs.ps1
 
+#- task: AzureMonitorAlerts@0
+#  inputs:
+#    ResourceGroupName: 'ShiraStorageAccount-rg'
+#    ResourceType: 'Microsoft.Storage/storageAccounts'
+#    ResourceName: 
 
