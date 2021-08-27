@@ -19,7 +19,7 @@ steps:
   inputs:
     targetType: 'inline'
     script: |
-      #New-AzResourceGroupDeployment `
+      New-AzResourceGroupDeployment `
       -Name 'Deployment-Create_the_first_storageaccount' `
       -ResourceGroupName 'ShiraStorageAccount-rg' `
       -TemplateFile 'ARM_Templete_StorageAccount.json' `
