@@ -3,11 +3,9 @@
 		
 	Set-AzContext -Subscription $SubscriptionID
 
-	Disable-AzContextAutosave –Scope Process
-	$Conn = Get-AutomationConnection -Name AzureRunAsConnection
-	Connect-AzAccount -ServicePrincipal -Tenant $Conn.TenantID `
-	-ApplicationId $Conn.ApplicationID -CertificateThumbprint $Conn.CertificateThumbprint
-	$AzureContext = Select-AzSubscription -SubscriptionId $Conn.SubscriptionID
+	$ConnectionAssetName = "AzureRunAsConnection"
+	$ConnectionFieldValues = @{"ApplicationId" = $Application.ApplicationId; "TenantId" = $TenantID.TenantId; "CertificateThumbprint" = $Cert.Thumbprint; "SubscriptionId" = $SubscriptionId}
+	New-AzureRmAutomationConnection -ResourceGroupName "ShiraStorageAccount-rg" -AutomationAccountName "shiraAutomationAccount" -Name $ConnectionAssetName -ConnectionTypeName AzureServicePrincipal -ConnectionFieldValues $ConnectionFieldValues 
 		
 	$ResourceGroupName= "ShiraStorageAccount-rg"
         $srcStorageAccountName = "shirastorageaccount0a"
@@ -28,6 +26,3 @@
       #Upload 100 blobs
       Get-ChildItem -Path C:\Users\shira.zadok\Desktop\100Blobs | Set-AzStorageBlobContent -Container $srcContainer `
       -Context $srcContext -Force
-
-      #Copy 100 blob
-      #azcopy copy "https://mysorage11.blob.core.windows.net/sourcecontainer?sv=2020-08-04&ss=bfqt&srt=co&sp=rwdlacuptfx&se=2021-09-10T04:03:56Z&st=2021-08-26T20:03:56Z&spr=https&sig=f4o4yp8lW8nTmwk9rI6hH6aJpp81DkW%2FoyEC1x7i8mU%3D" "https://mysorage22.blob.core.windows.net/destcontainer?sv=2020-08-04&ss=bfqt&srt=co&sp=rwdlacuptfx&se=2021-09-10T04:05:44Z&st=2021-08-26T20:05:44Z&spr=https&sig=lRf8nc%2FJnoX%2BAzGQBzVIXsmcRZggPWO2RCoSzYIVOjE%3D" --recursive
