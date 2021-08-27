@@ -59,6 +59,7 @@ steps:
     script: |
       Set-AzContext -Subscription $(subscriptionID)
       $connectionName = "AzureRunAsConnection"
+      $connectionName = "AzureRunAsConnection"
       try
       {
           # Get the connection "AzureRunAsConnection "
