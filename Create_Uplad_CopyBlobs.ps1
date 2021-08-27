@@ -5,7 +5,7 @@
 		
 	$ResourceGroupName= "ShiraStorageAccount-rg"
         $srcStorageAccountName = "mysorage11"
-		$destStorageAccountName = "mysorage22"
+	$destStorageAccountName = "mysorage22"
         $srcStorageAccountContext = (Get-AzStorageAccount -ResourceGroupName $ResourceGroupName -Name $srcStorageAccountName).Context
         $destStorageAccountContext = (Get-AzStorageAccount -ResourceGroupName $ResourceGroupName -Name $destStorageAccountName).Context
         $srcContainer = "sourcecontainer"
