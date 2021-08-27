@@ -6,7 +6,7 @@
             "value": "westeurope"
         },
         "storageAccountName": {
-            "value": "shiraStorageAccount_A"
+            "value": "shirastorageaccount_a"
         },
         "accountType": {
             "value": "Standard_RAGRS"
