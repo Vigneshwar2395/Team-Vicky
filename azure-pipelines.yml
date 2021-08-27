@@ -58,12 +58,22 @@ steps:
     targetType: 'inline'
     script: |
       Set-AzContext -Subscription $(subscriptionID)
-      Invoke-AzVMRunCommand `
+        $result = Invoke-AzVMRunCommand `
        -ResourceGroupName $(myResourceGroupName) `
        -Name ShiraWindowsServer `
        -CommandId 'RunPowerShellScript' `
        -ScriptPath Create_Uplad_CopyBlobs.ps1 `
        -Parameter @{myResourceGroupName = "ShiraStorageAccount-rg"; subscriptionID="a8108c2b-496c-424d-8347-ecc8afb6384c"; srcStorageAccountName = "shirastorageaccount0a"; destStorageAccountName = "shirastorageaccount0b"}
+       
+       if ($result.value.Message -like '*error*') 
+        {  
+         Write-Output "Failed. An error occurred: `n $($result.value.Message)" | Out-File -Filepath C:\OutputLog.txt -Append
+         throw $($result.value.Message)        
+        }
+        else
+        {
+          Write-Output "Success" | Out-File -Filepath C:\OutputLog.txt -Append
+        }
 
         
 
