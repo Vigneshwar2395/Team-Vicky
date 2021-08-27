@@ -6,10 +6,10 @@ pool: Default
 steps:
 - script: hostname
 
-#- task: GitHubComment@0
-#  inputs:
-#    gitHubConnection: 'github.com_shiraZadok'
-#    repositoryName: 'shiraZadok/AzureRmPipeline_MTC'
+- task: GitHubComment@0
+  inputs:
+    gitHubConnection: 'github.com_shiraZadok'
+    repositoryName: 'shiraZadok/AzureRmPipeline_MTC'
 
 
 #Task 2
@@ -19,6 +19,8 @@ steps:
   inputs:
     targetType: 'inline'
     script: |
+      $SubscriptionID= "a8108c2b-496c-424d-8347-ecc8afb6384c"
+      Set-AzContext -Subscription $SubscriptionID
       New-AzResourceGroupDeployment -Name Deployment_Create_storageaccount_A `
       -ResourceGroupName 'ShiraStorageAccount-rg' `
       -TemplateFile 'ARM_Templete_StorageAccount.json' `
