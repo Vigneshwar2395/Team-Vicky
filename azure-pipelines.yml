@@ -62,7 +62,10 @@ steps:
        -ResourceGroupName $(myResourceGroupName) `
        -Name ShiraWindowsServer `
        -CommandId 'RunPowerShellScript' `
-       -ScriptPath Create_Uplad_CopyBlobs.ps1
+       -ScriptPath Create_Uplad_CopyBlobs.ps1 `
+       -Parameter @{myResourceGroupName = $(myResourceGroupName); subscriptionID=$(subscriptionID); srcStorageAccountName = "shirastorageaccount0a"; destStorageAccountName = "shirastorageaccount0b"}
+
+        
 
 #- task: AzureMonitorAlerts@0
 #  inputs:
