@@ -58,10 +58,12 @@ steps:
   inputs:
     targetType: 'inline'
     script: |
+      $SubscriptionID= "a8108c2b-496c-424d-8347-ecc8afb6384c"
+      Set-AzContext -Subscription $SubscriptionID
       Invoke-AzVMRunCommand `
-      -ResourceGroupName 'ShiraStorageAccount-rg' `
-      -Name ShiraWindowsServer `
-      -CommandId 'RunPowerShellScript' `
-      -ScriptPath Create_Uplad_CopyBlobs.ps1
+       -ResourceGroupName 'ShiraStorageAccount-rg' `
+       -Name ShiraWindowsServer `
+       -CommandId 'RunPowerShellScript' `
+       -ScriptPath Create_Uplad_CopyBlobs.ps1
 
 
