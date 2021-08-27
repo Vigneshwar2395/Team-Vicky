@@ -3,6 +3,11 @@ trigger:
 
 pool: Default
 
+
+#Global Variables
+variables:
+ myResourceGroupName: ShiraStorageAccount-rg
+
 steps:
 - script: hostname
 
@@ -20,7 +25,7 @@ steps:
     targetType: 'inline'
     script: |
       New-AzResourceGroupDeployment -Name Deployment_Create_storageaccount_A `
-      -ResourceGroupName 'ShiraStorageAccount-rg' `
+      -ResourceGroupName $(myResourceGroupName) `
       -TemplateFile 'ARM_Templete_StorageAccount.json' `
       -TemplateParameterFile 'parameters_sa1.json'
 
