@@ -1,9 +1,9 @@
         #Make sure that I run this command against the VMs in the right Subscription
-		$SubscriptionID= "a8108c2b-496c-424d-8347-ecc8afb6384c"
+	$SubscriptionID= "a8108c2b-496c-424d-8347-ecc8afb6384c"
 		
-		Set-AzContext -Subscription $SubscriptionID
+	Set-AzContext -Subscription $SubscriptionID
 		
-		$ResourceGroupName= "ShiraStorageAccount-rg"
+	$ResourceGroupName= "ShiraStorageAccount-rg"
         $srcStorageAccountName = "mysorage11"
 		$destStorageAccountName = "mysorage22"
         $srcStorageAccountContext = (Get-AzStorageAccount -ResourceGroupName $ResourceGroupName -Name $srcStorageAccountName).Context
