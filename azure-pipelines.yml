@@ -31,9 +31,9 @@ steps:
      -TemplateFile 'ARM_Templete_StorageAccount.json' `
      -TemplateParameterFile 'parameters_sa2.json'
 
-      #For ($i=0; $i -lt 1; $i++) {
-     #New-AzResourceGroupDeployment `
-      #-Name Deployment-Create_the_first_storageaccount `
+     #For ($i=0; $i -lt 1; $i++) {
+    #New-AzResourceGroupDeployment `
+    #-Name Deployment-Create_the_first_storageaccount `
       #-ResourceGroupName ShiraStorageAccount-rg `
       #-TemplateFile 'Generally_Template_StorageAccount.json'
       #}
