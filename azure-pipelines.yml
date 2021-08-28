@@ -7,6 +7,7 @@ pool: Default
 #Global Variables
 variables:
  myResourceGroupName: ShiraStorageAccount-rg
+ subscriptionName: "MSEC_Candidates_Homeworks"
  subscriptionID: "a8108c2b-496c-424d-8347-ecc8afb6384c"
 
 #Connect to the self-hosted agents
@@ -35,6 +36,14 @@ steps:
       -ResourceGroupName $(myResourceGroupName) `
       -TemplateFile 'ARM_Templete_StorageAccount.json' `
       -TemplateParameterFile 'parameters_sa2.json'
+
+- task: AzureMonitorAlerts@0
+  inputs:
+    azureSubscription: $(subscriptionName)
+    ResourceGroupName: $(ShiraStorageAccount-rg)
+    ResourceType: 'Microsoft.Storage/storageAccounts'
+    ResourceName: 'shirastorageaccount0a'
+    AlertRules: 
 
 
 #Task 3
@@ -82,4 +91,13 @@ steps:
 #    ResourceGroupName: $(myResourceGroupName)
 #    ResourceType: 'Microsoft.Storage/storageAccounts'
 #    ResourceName: 
+
+- task: AzureMonitorAlerts@0
+  inputs:
+    azureSubscription: $(subscriptionName)
+    ResourceGroupName: $(ShiraStorageAccount-rg)
+    ResourceType: 'Microsoft.Compute/virtualMachines'
+    ResourceName: 'ShiraWindowsServer'
+    AlertRules: 
+
 
