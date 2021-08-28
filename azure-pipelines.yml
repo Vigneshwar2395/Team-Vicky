@@ -23,19 +23,19 @@ steps:
 #Task 2
 #Create an ARM template for storage account
 #And create 2 storage accounts
-- task: PowerShell@2
-  inputs:
-    targetType: 'inline'
-    script: |
-      New-AzResourceGroupDeployment -Name Deployment_Create_storageaccount_A `
-      -ResourceGroupName $(myResourceGroupName) `
-      -TemplateFile 'ARM_Templete_StorageAccount.json' `
-      -TemplateParameterFile 'parameters_sa1.json'
-
-      New-AzResourceGroupDeployment -Name Deployment_Create_storageaccount_B `
-      -ResourceGroupName $(myResourceGroupName) `
-      -TemplateFile 'ARM_Templete_StorageAccount.json' `
-      -TemplateParameterFile 'parameters_sa2.json'
+#- task: PowerShell@2
+#  inputs:
+#    targetType: 'inline'
+#    script: |
+#      New-AzResourceGroupDeployment -Name Deployment_Create_storageaccount_A `
+#      -ResourceGroupName $(myResourceGroupName) `
+#      -TemplateFile 'ARM_Templete_StorageAccount.json' `
+#      -TemplateParameterFile 'parameters_sa1.json'
+#
+#      New-AzResourceGroupDeployment -Name Deployment_Create_storageaccount_B `
+#      -ResourceGroupName $(myResourceGroupName) `
+#      -TemplateFile 'ARM_Templete_StorageAccount.json' `
+#      -TemplateParameterFile 'parameters_sa2.json'
 
 #- task: AzureMonitorAlerts@0
 #  inputs:
