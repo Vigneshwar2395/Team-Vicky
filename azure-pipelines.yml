@@ -69,7 +69,7 @@ steps:
 #      
 #      New-AzResourceGroupDeployment `
 #     -Name Deployment_create_VM_2 `
-#      -ResourceGroupName $(myResourceGroupName) `
+#      -ResourceGroupName '$(myResourceGroupName)' `
 #      -TemplateFile 'template.json' `
 #      -TemplateParameterFile 'parameters.json'
 
@@ -84,7 +84,7 @@ steps:
       Set-AzContext -Subscription $(subscriptionID)
     
         $result = Invoke-AzVMRunCommand `
-       -ResourceGroupName $(myResourceGroupName) `
+       -ResourceGroupName 'ShiraStorageAccount-rg' `
        -Name 'shiraWindowsServer2' `
        -CommandId 'RunPowerShellScript' `
        -ScriptPath Create_Uplad_CopyBlobs.ps1 `
