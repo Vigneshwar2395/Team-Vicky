@@ -37,13 +37,13 @@ steps:
       -TemplateFile 'ARM_Templete_StorageAccount.json' `
       -TemplateParameterFile 'parameters_sa2.json'
 
-- task: AzureMonitorAlerts@0
-  inputs:
-    azureSubscription: $(subscriptionName)
-    ResourceGroupName: $(ShiraStorageAccount-rg)
-    ResourceType: 'Microsoft.Storage/storageAccounts'
-    ResourceName: 'shirastorageaccount0a'
-    AlertRules: 
+#- task: AzureMonitorAlerts@0
+#  inputs:
+#    azureSubscription: $(subscriptionName)
+#    ResourceGroupName: $(ShiraStorageAccount-rg)
+#    ResourceType: 'Microsoft.Storage/storageAccounts'
+#    ResourceName: 'shirastorageaccount0a'
+#    AlertRules: 
 
 
 #Task 3
@@ -86,12 +86,12 @@ steps:
 
         
 
-- task: AzureMonitorAlerts@0
-  inputs:
-    azureSubscription: $(subscriptionName)
-    ResourceGroupName: $(ShiraStorageAccount-rg)
-    ResourceType: 'Microsoft.Compute/virtualMachines'
-    ResourceName: 'ShiraWindowsServer'
-    AlertRules: 
+#- task: AzureMonitorAlerts@0
+#  inputs:
+#    azureSubscription: $(subscriptionName)
+#    ResourceGroupName: $(ShiraStorageAccount-rg)
+#    ResourceType: 'Microsoft.Compute/virtualMachines'
+#    ResourceName: 'ShiraWindowsServer'
+#    AlertRules: 
 
 
