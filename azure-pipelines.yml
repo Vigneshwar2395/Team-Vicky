@@ -86,12 +86,6 @@ steps:
 
         
 
-#- task: AzureMonitorAlerts@0
-#  inputs:
-#    ResourceGroupName: $(myResourceGroupName)
-#    ResourceType: 'Microsoft.Storage/storageAccounts'
-#    ResourceName: 
-
 - task: AzureMonitorAlerts@0
   inputs:
     azureSubscription: $(subscriptionName)
