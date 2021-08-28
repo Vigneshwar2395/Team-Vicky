@@ -62,16 +62,16 @@ steps:
 
 #Task 3
 #Create an ARM template for a Windows server
-- task: PowerShell@2
-  inputs:
-    targetType: 'inline'
-    script: |
-      
-      New-AzResourceGroupDeployment `
-      -Name Deployment_create_VM_2 `
-      -ResourceGroupName $(myResourceGroupName) `
-      -TemplateFile 'template.json' `
-      -TemplateParameterFile 'parameters.json'
+#- task: PowerShell@2
+#  inputs:
+#    targetType: 'inline'
+#    script: |
+#      
+#      New-AzResourceGroupDeployment `
+#     -Name Deployment_create_VM_2 `
+#      -ResourceGroupName $(myResourceGroupName) `
+#      -TemplateFile 'template.json' `
+#      -TemplateParameterFile 'parameters.json'
 
 
 #Task 5
