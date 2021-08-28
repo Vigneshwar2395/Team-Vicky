@@ -83,27 +83,28 @@ steps:
     script: |
       Set-AzContext -Subscription $(subscriptionID)
 
-      $Server = "server01"
+      $Server = "shiraWindowsServer2"
       [System.String]$ScriptBlock = {Get-Process}
       $FileName = "Create_Uplad_CopyBlobs.ps1"
       Out-File -FilePath $FileName -InputObject $ScriptBlock -NoNewline
       $vm = Get-AzVM -Name $Server
+      Invoke-AzVMRunCommand -ResourceGroupName $vm.ResourceGroupName -Name $Server -CommandId 'RunPowerShellScript' -ScriptPath $FileName
     
-        $result = Invoke-AzVMRunCommand `
-       -ResourceGroupName 'ShiraStorageAccount-rg' `
-       -Name 'shiraWindowsServer2' `
-       -CommandId 'RunPowerShellScript' `
-       -ScriptPath Create_Uplad_CopyBlobs.ps1 `
-       
-       if ($result.value.Message -like '*error*') 
-        {  
-         Write-Output "Failed. An error occurred: `n $($result.value.Message)" | Out-File -Filepath C:\Users\ShiraZadok\Microsoft\OutputLog.txt -Append -Force
-         throw $($result.value.Message)        
-        }
-        else
-        {
-          Write-Output "Success" | Out-File -Filepath C:\Users\ShiraZadok\Microsoft\OutputLog.txt -Append -Force
-        }
+      #$result = Invoke-AzVMRunCommand `
+      # -ResourceGroupName 'ShiraStorageAccount-rg' `
+      # -Name 'shiraWindowsServer2' `
+      # -CommandId 'RunPowerShellScript' `
+      # -ScriptPath Create_Uplad_CopyBlobs.ps1 `
+      # 
+      # if ($result.value.Message -like '*error*') 
+      #  {  
+      #   Write-Output "Failed. An error occurred: `n $($result.value.Message)" | Out-File -Filepath C:\Users\ShiraZadok\Microsoft\OutputLog.txt -Append -Force
+      #   throw $($result.value.Message)        
+      #  }
+      #  else
+      #  {
+      #    Write-Output "Success" | Out-File -Filepath C:\Users\ShiraZadok\Microsoft\OutputLog.txt -Append -Force
+      #  }
 
         
 
