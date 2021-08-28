@@ -37,14 +37,6 @@ steps:
 #      -TemplateFile 'ARM_Templete_StorageAccount.json' `
 #      -TemplateParameterFile 'parameters_sa2.json'
 
-#- task: AzureMonitorAlerts@0
-#  inputs:
-#    azureSubscription: $(subscriptionName)
-#    ResourceGroupName: $(ShiraStorageAccount-rg)
-#    ResourceType: 'Microsoft.Storage/storageAccounts'
-#    ResourceName: 'shirastorageaccount0a'
-#    AlertRules: 
-
 
 #Task 3
 #Create an ARM template for a Windows server
@@ -73,31 +65,39 @@ steps:
 #      -TemplateFile 'template.json' `
 #      -TemplateParameterFile 'parameters.json'
 
+- task: AzureMonitorAlerts@0
+  inputs:
+    azureSubscription: $(subscriptionName)
+    ResourceGroupName: $(ShiraStorageAccount-rg)
+    ResourceType: 'Microsoft.Storage/storageAccounts'
+    ResourceName: 'shirastorageaccount0a'
+    AlertRules:  Set-AzContext -Subscription $(subscriptionID)
+
 
 #Task 5
 #Create, Upload and Copy 100 blobs from Storage account A to B
 #Execute it on the windows server
-- task: PowerShell@2
-  inputs:
-    targetType: 'inline'
-    script: |
-      Set-AzContext -Subscription $(subscriptionID)
-    
-        $result = Invoke-AzVMRunCommand `
-       -ResourceGroupName 'ShiraStorageAccount-rg' `
-       -Name 'shiraWindowsServer2' `
-       -CommandId 'RunPowerShellScript' `
-       -ScriptPath Create_Uplad_CopyBlobs.ps1 `
-       
-       if ($result.value.Message -like '*error*') 
-        {  
-         Write-Output "Failed. An error occurred: `n $($result.value.Message)" | Out-File -Filepath C:\Users\ShiraZadok\Microsoft\OutputLog.txt -Append -Force
-         throw $($result.value.Message)        
-        }
-        else
-        {
-          Write-Output "Success" | Out-File -Filepath C:\Users\ShiraZadok\Microsoft\OutputLog.txt -Append -Force
-        }
+#- task: PowerShell@2
+#  inputs:
+#    targetType: 'inline'
+#    script: |
+#      Set-AzContext -Subscription $(subscriptionID)
+#    
+#        $result = Invoke-AzVMRunCommand `
+#       -ResourceGroupName 'ShiraStorageAccount-rg' `
+#       -Name 'shiraWindowsServer2' `
+#       -CommandId 'RunPowerShellScript' `
+#       -ScriptPath Create_Uplad_CopyBlobs.ps1 `
+#       
+#       if ($result.value.Message -like '*error*') 
+#        {  
+#         Write-Output "Failed. An error occurred: `n $($result.value.Message)" | Out-File -Filepath C:\Users\ShiraZadok\Microsoft\OutputLog.txt -Append -Force
+#         throw $($result.value.Message)        
+#        }
+#        else
+#        {
+#          Write-Output "Success" | Out-File -Filepath C:\Users\ShiraZadok\Microsoft\OutputLog.txt -Append -Force
+#        }
 
         
 
