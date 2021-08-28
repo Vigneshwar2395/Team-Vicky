@@ -1,8 +1,3 @@
- # Get the credentials for Azure login
- $Cred = Get-Credential
- # Connect to Azure with the credentials 
- Connect-AzAccount -Credential $Cred
-
 #Make sure that I run this command against the VMs in the right Subscription
 	$SubscriptionID= "a8108c2b-496c-424d-8347-ecc8afb6384c"
 		
