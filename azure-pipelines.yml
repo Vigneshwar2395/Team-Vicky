@@ -68,7 +68,7 @@ steps:
     script: |
       
       New-AzResourceGroupDeployment `
-      -Name Deployment_create_VM2 `
+      -Name Deployment_create_VM_2 `
       -ResourceGroupName $(myResourceGroupName) `
       -TemplateFile 'template.json' `
       -TemplateParameterFile 'parameters.json'
