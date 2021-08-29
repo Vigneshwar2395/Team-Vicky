@@ -98,11 +98,11 @@ steps:
 
       #Customize the template
       $Content = Get-Content -Path $myPortalDashboardTemplatePath -Raw
-      $Content = $Content -replace '<subscriptionID>', $(subscriptionID)
-      $Content = $Content -replace '<rgName>', $(myResourceGroupName)
-      $Content = $Content -replace '<vmName>', $vmName
+      $Content = $Content -replace '<subscriptionID>', '$(subscriptionID)'
+      $Content = $Content -replace '<rgName>', '$(myResourceGroupName)'
+      $Content = $Content -replace '<vmName>', '$vmName'
       $Content = $Content -replace '<dashboardTitle>', $dashboardTitle
-      $Content = $Content -replace '<location>', $(location)
+      $Content = $Content -replace '<location>', '$(location)'
       $Content | Out-File -FilePath $myPortalDashboardTemplatePath -Force
 
       #Deploy the dashboard template
