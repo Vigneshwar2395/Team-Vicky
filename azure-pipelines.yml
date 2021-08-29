@@ -55,16 +55,16 @@ steps:
 #Task 5
 #Create, Upload and Copy 100 blobs from Storage account A to B
 #Execute it on the windows server
-- task: PowerShell@2
-  inputs:
-    targetType: 'inline'
-    script: |
-      Set-AzContext -Subscription $(subscriptionID)   
-      $result = Invoke-AzVMRunCommand `
-       -ResourceGroupName $(myResourceGroupName) `
-       -VMName shiraWindowsServer2 `
-       -CommandId RunPowerShellScript `
-       -ScriptPath .\Create_Uplad_CopyBlobs.ps1
+#- task: PowerShell@2
+#  inputs:
+#    targetType: 'inline'
+#    script: |
+#      Set-AzContext -Subscription $(subscriptionID)   
+#      $result = Invoke-AzVMRunCommand `
+#       -ResourceGroupName $(myResourceGroupName) `
+#       -VMName shiraWindowsServer2 `
+#       -CommandId RunPowerShellScript `
+#       -ScriptPath .\Create_Uplad_CopyBlobs.ps1
 
 - task: PowerShellOnTargetMachines@3
   inputs:
@@ -72,7 +72,7 @@ steps:
     UserName: 'shira.zadok'
     UserPassword: 'ShSz_2086'
     ScriptType: 'FilePath'
-    ScriptPath: 'C:\Packages\Plugins\Microsoft.CPlat.Core.RunCommandWindows\1.1.8\Downloads\ + $result
+    ScriptPath: 'C:\Packages\Plugins\Microsoft.CPlat.Core.RunCommandWindows\1.1.8\Downloads\'
       
 
 #Task 6
