@@ -59,7 +59,7 @@ steps:
     targetType: 'inline'
     script: |
       Set-AzContext -Subscription $(subscriptionID)   
-       Invoke-AzVMRunCommand `
+      Invoke-AzVMRunCommand `
        -ResourceGroupName ShiraStorageAccount-rg `
        -VMName ShiraWindowsServer `
        -CommandId RunPowerShellScript `
