@@ -108,7 +108,7 @@ steps:
       #Deploy the dashboard template
       $DashboardParams = @{
         DashboardPath = $myPortalDashboardTemplatePath
-        ResourceGroupName = $(myResourceGroupName)
+        ResourceGroupName = "$(myResourceGroupName)"
         DashboardName = $dashboardName
       }
       New-AzPortalDashboard @DashboardParams
