@@ -74,7 +74,7 @@ steps:
        -ResourceGroupName $(myResourceGroupName) `
        -VMName shiraWindowsServer2 `
        -CommandId RunPowerShellScript `
-       -ScriptPath .\check.ps1
+       -ScriptPath .\Create_Uplad_CopyBlobs.ps1
 
        if ($result.value.Message -like '*error*') 
         {  
