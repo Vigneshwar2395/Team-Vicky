@@ -8,6 +8,7 @@ For this task, I wrote the code in PowerShell.
 ### Microsoft's object resources:
 #### Resource Group-
 A resource group is a container that holds related resources for an Azure solution. The resource group can include all the resources for the solution, or only those resources that you want to manage as a group
+
 ![storage account](https://user-images.githubusercontent.com/58064644/131240949-9c2d2496-a6d6-4fbf-907e-23caa867e2a1.jpg)
 
 #### Storage Account-
