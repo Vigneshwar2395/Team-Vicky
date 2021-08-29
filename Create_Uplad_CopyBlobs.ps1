@@ -10,10 +10,9 @@ $srcStorageAccountContext = (Get-AzStorageAccount -ResourceGroupName $ResourceGr
 $destStorageAccountContext = (Get-AzStorageAccount -ResourceGroupName $ResourceGroupName -Name $destStorageAccountName).Context
 $srcContainer = "sourcecontainer"
 $destContainer = "destcontainer"
-
 #Create source and destination container
-New-AzStorageContainer -Name $srcContainer -Context $srcStorageAccountContext -Permission blob
-New-AzStorageContainer -Name $destContainer -Context $destStorageAccountContext -Permission blob
+#New-AzStorageContainer -Name $srcContainer -Context $srcStorageAccountContext -Permission blob
+#New-AzStorageContainer -Name $destContainer -Context $destStorageAccountContext -Permission blob
         
 $srcStorageKey = Get-AzStorageAccountKey -Name $srcStorageAccountName `
                  -ResourceGroupName $ResourceGroupName 
@@ -24,4 +23,4 @@ Get-ChildItem -Path C:\Users\shira.zadok\Desktop\100Blobs | Set-AzStorageBlobCon
 -Context $srcContext -Force
 
 #Copy 100 blob
-azcopy copy "https://shirastorageaccount0a.blob.core.windows.net/sourcecontainer?sv=2020-08-04&ss=bfqt&srt=sco&sp=rwdlacuptfx&se=2021-08-29T08:38:04Z&st=2021-08-29T00:38:04Z&spr=https&sig=YdByD9ZcZchT%2FgwedbfIsUAsJq0kdF%2BNdKDCcy2P9ss%3D" "https://shirastorageaccount0b.blob.core.windows.net/destcontainer?sv=2020-08-04&ss=bfqt&srt=sco&sp=rwdlacuptfx&se=2021-10-31T09:35:18Z&st=2021-08-29T00:35:18Z&spr=https&sig=E67fA086kA9Vi3DQ4ytcL81%2BBNiRRSNO3D1xLAkLyqE%3D" --recursive
+azcopy copy "https://shirastorageaccount0a.blob.core.windows.net/sourcecontainer?sv=2020-08-04&ss=bfqt&srt=sco&sp=rwdlacuptfx&se=2021-10-31T10:03:46Z&st=2021-08-29T01:03:46Z&spr=https&sig=dAXc8MNHpgNnrAbiqtGM7GGMdLpoixmUKfyKSBatWZc%3D" "https://shirastorageaccount0b.blob.core.windows.net/destcontainer?sv=2020-08-04&ss=bfqt&srt=sco&sp=rwdlacuptfx&se=2021-10-31T10:02:16Z&st=2021-08-29T01:02:16Z&spr=https&sig=ik5acirjGtqsFl%2Fn566Nx5ntLh3BTMY8VCi60j6iqFA%3D" --recursive
