@@ -44,7 +44,6 @@ steps:
   inputs:
     targetType: 'inline'
     script: |
-      
       New-AzResourceGroupDeployment `
       -Name Deployment_create_VM_2 `
       -ResourceGroupName '$(myResourceGroupName)' `
