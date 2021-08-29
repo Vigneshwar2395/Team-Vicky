@@ -15,9 +15,9 @@ New-AzStorageContainer -Name $srcContainer -Context $srcStorageAccountContext -P
 New-AzStorageContainer -Name $destContainer -Context $destStorageAccountContext -Permission blob
         
 $srcStorageKey = Get-AzStorageAccountKey -Name $srcStorageAccountName `
-                 -ResourceGroupName $ResourceGroupName 
+-ResourceGroupName $ResourceGroupName 
 $srcContext = New-AzStorageContext -StorageAccountName $srcStorageAccountName `
-              -StorageAccountKey $srcStorageKey.Value[0] 
+-StorageAccountKey $srcStorageKey.Value[0] 
 #Upload 100 blobs
 Get-ChildItem -Path C:\Users\shira.zadok\Desktop\100Blobs | Set-AzStorageBlobContent -Container $srcContainer `
 -Context $srcContext -Force
