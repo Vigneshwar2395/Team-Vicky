@@ -106,12 +106,9 @@ steps:
       $Content | Out-File -FilePath $myPortalDashboardTemplatePath -Force
 
       #Deploy the dashboard template
-      $DashboardParams = @{
-        DashboardPath = $myPortalDashboardTemplatePath
-        ResourceGroupName = "$(myResourceGroupName)"
-        DashboardName = $dashboardName
-      }
-      New-AzPortalDashboard @DashboardParams
+      New-AzPortalDashboard -Name $dashboardName`
+      -ResourceGroupName $(myResourceGroupName) `
+      -DashboardPath $myPortalDashboardTemplatePath
 
 
 
