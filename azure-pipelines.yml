@@ -66,32 +66,34 @@ steps:
 #       -CommandId RunPowerShellScript `
 #       -ScriptPath .\Create_Uplad_CopyBlobs.ps1
 
-- task: PowerShellOnTargetMachines@3
-  inputs:
-    Machines: 'sws2.eastus.cloudapp.azure.com'
-    UserName: 'shira.zadok'
-    UserPassword: 'ShSz_2086'
-    ScriptType: 'FilePath'
-    ScriptPath: 'C:\Packages\Plugins\Microsoft.CPlat.Core.RunCommandWindows\1.1.8\Downloads\'
+#- task: PowerShellOnTargetMachines@3
+#  inputs:
+#    Machines: 'sws2.eastus.cloudapp.azure.com'
+#    UserName: 'shira.zadok'
+#    UserPassword: 'ShSz_2086'
+#    ScriptType: 'FilePath'
+#    ScriptPath: 'C:\Packages\Plugins\Microsoft.CPlat.Core.RunCommandWindows\1.1.8\Downloads\'
       
 
 #Task 6
 #Create the alert rule on the CPU% metric on a classic VM
-
-
-#     $vm = Get-AzVM -ResourceGroupName $(myResourceGroupName) -Name shiraWindowsServer2    
-#     Add-AzMetricAlertRule `
-#      -Name shiraWindowsServer2 `
-#      -Location "East US" `
-#      -ResourceGroup $(myResourceGroupName) `
-#      -TargetResourceId $vm.Id `
-#      -MetricName "Percentage CPU" `
-#      -Operator GreaterThan `
-#      -Threshold 1 `
-#      -WindowSize 00:05:00 `
-#      -TimeAggregationOperator Average `
-#      -Action $actionEmail, $actionWebhook `
-#      -Description "alert on CPU > 1%"
+- task: PowerShell@2
+  inputs:
+    targetType: 'inline'
+    script: |
+     $vm = Get-AzVM -ResourceGroupName $(myResourceGroupName) -Name shiraWindowsServer2    
+     Add-AzMetricAlertRule `
+      -Name shiraWindowsServer2 `
+      -Location "East US" `
+      -ResourceGroup $(myResourceGroupName) `
+      -TargetResourceId $vm.Id `
+      -MetricName "Percentage CPU" `
+      -Operator GreaterThan `
+      -Threshold 1 `
+      -WindowSize 00:05:00 `
+      -TimeAggregationOperator Average `
+      -Action $actionEmail, $actionWebhook `
+      -Description "alert on CPU > 1%"
 
 #- task: AzureMonitorAlerts@0
 #  inputs:
