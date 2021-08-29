@@ -96,6 +96,7 @@ steps:
        -CommandId RunPowerShellScript `
        -ScriptPath .\Create_Uplad_CopyBlobs.ps1 `
        
+       
        if ($result.value.Message -like '*error*') 
         {  
          Write-Output "Failed. An error occurred: `n $($result.value.Message)" | Out-File -Filepath C:\Users\ShiraZadok\Microsoft\OutputLog.txt -Append -Force
