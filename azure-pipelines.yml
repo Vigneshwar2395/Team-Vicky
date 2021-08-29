@@ -14,7 +14,7 @@ variables:
 steps:
 - script: hostname
 
-#Use the service connection Github
+#Use the service connection - Github
 #- task: GitHubComment@0
 #  inputs:
 #    gitHubConnection: 'github.com_shiraZadok'
@@ -66,7 +66,8 @@ steps:
        -CommandId RunPowerShellScript `
        -ScriptPath .\Create_Uplad_CopyBlobs.ps1
 
-
+#Task 6
+#Create monitor
 #- task: AzureMonitorAlerts@0
 #  inputs:
 #    azureSubscription: $(subscriptionName)
