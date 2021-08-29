@@ -14,6 +14,7 @@ variables:
 steps:
 - script: hostname
 
+#Use the service connection Github
 #- task: GitHubComment@0
 #  inputs:
 #    gitHubConnection: 'github.com_shiraZadok'
@@ -47,8 +48,8 @@ steps:
 #      New-AzResourceGroupDeployment `
 #     -Name Deployment_create_VM_2 `
 #      -ResourceGroupName '$(myResourceGroupName)' `
-#      -TemplateFile 'template.json' `
-#      -TemplateParameterFile 'parameters.json'
+#      -TemplateFile 'WindowsServerTemplate2.json' `
+#      -TemplateParameterFile 'WindowsServerParameters2.json'
 
 
 #Task 5
@@ -61,7 +62,7 @@ steps:
       Set-AzContext -Subscription $(subscriptionID)   
       Invoke-AzVMRunCommand `
        -ResourceGroupName ShiraStorageAccount-rg `
-       -VMName ShiraWindowsServer `
+       -VMName shiraWindowsServer2 `
        -CommandId RunPowerShellScript `
        -ScriptPath .\Create_Uplad_CopyBlobs.ps1
 
