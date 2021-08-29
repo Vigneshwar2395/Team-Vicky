@@ -9,6 +9,7 @@ variables:
  myResourceGroupName: ShiraStorageAccount-rg
  subscriptionName: "MSEC_Candidates_Homeworks"
  subscriptionID: "a8108c2b-496c-424d-8347-ecc8afb6384c"
+ location: "eastus"
 
 #Connect to the self-hosted agents
 steps:
@@ -80,21 +81,55 @@ steps:
   inputs:
     targetType: 'inline'
     script: |
-     $vm = Get-AzVM -ResourceGroupName $(myResourceGroupName) -Name shiraWindowsServer2
-     $actionEmail = New-AzAlertRuleEmail -CustomEmail shira.zadok@msmail.ariel.ac.il
-     $actionWebhook = New-AzAlertRuleWebhook -ServiceUri "https://ms.portal.azure.com"
-     Add-AzMetricAlertRule `
-      -Name shiraWindowsServer2 `
-      -Location "East US" `
-      -ResourceGroup $(myResourceGroupName) `
-      -TargetResourceId $vm.Id `
-      -MetricName "Percentage CPU" `
-      -Operator GreaterThan `
-      -Threshold 1 `
-      -WindowSize 00:05:00 `
-      -TimeAggregationOperator Average `
-      -Action $actionEmail, $actionWebhook `
-      -Description "alert on CPU > 1%"
+      
+      #Create a dashboard
+      Set-AzContext -SubscriptionId $(subscriptionID)
+      # Dashboard Title
+      $dashboardTitle = 'Shira-Dashboard'
+      # Dashboard Name
+      $dashboardName = $dashboardTitle -replace '\s'
+      # Name of test VM
+      $vmName = 'shiraWindowsServer2'
+
+      #Download the dashboard template
+      $myPortalDashboardTemplateUrl = 'https://raw.githubusercontent.com/shiraZadok/AzureRmPipeline_MTC/main/Dashboard.json'
+      $myPortalDashboardTemplatePath = "$HOME\Dashboard.json"
+      Invoke-WebRequest -Uri $myPortalDashboardTemplateUrl -OutFile $myPortalDashboardTemplatePath -UseBasicParsing
+
+      #Customize the template
+      $Content = Get-Content -Path $myPortalDashboardTemplatePath -Raw
+      $Content = $Content -replace '<subscriptionID>', $(subscriptionID)
+      $Content = $Content -replace '<rgName>', $(myResourceGroupName)
+      $Content = $Content -replace '<vmName>', $vmName
+      $Content = $Content -replace '<dashboardTitle>', $dashboardTitle
+      $Content = $Content -replace '<location>', $(location)
+      $Content | Out-File -FilePath $myPortalDashboardTemplatePath -Force
+
+      #Deploy the dashboard template
+      $DashboardParams = @{
+        DashboardPath = $myPortalDashboardTemplatePath
+        ResourceGroupName = $(myResourceGroupName)
+        DashboardName = $dashboardName
+      }
+      New-AzPortalDashboard @DashboardParams
+
+
+
+    #  $vm = Get-AzVM -ResourceGroupName $(myResourceGroupName) -Name shiraWindowsServer2
+    #  $actionEmail = New-AzAlertRuleEmail -CustomEmail shira.zadok@msmail.ariel.ac.il
+    #  $actionWebhook = New-AzAlertRuleWebhook -ServiceUri "https://ms.portal.azure.com"
+    #  Add-AzMetricAlertRule `
+    #  -Name shiraWindowsServer2 `
+    #  -Location "East US" `
+    #  -ResourceGroup $(myResourceGroupName) `
+    #  -TargetResourceId $vm.Id `
+    #  -MetricName "Percentage CPU" `
+    #  -Operator GreaterThan `
+    #  -Threshold 1 `
+    #  -WindowSize 00:05:00 `
+    #  -TimeAggregationOperator Average `
+    #  -Action $actionEmail, $actionWebhook `
+    #  -Description "alert on CPU > 1%"
 
 #- task: AzureMonitorAlerts@0
 #  inputs:
