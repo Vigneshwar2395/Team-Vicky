@@ -10,7 +10,7 @@ $destStorageAccountContext = (Get-AzStorageAccount -ResourceGroupName $ResourceG
 $srcContainer = "sourcecontainer"
 $destContainer = "destcontainer"
 
-#Create source and destination container
+#Create source and destination containers
 Try
 {
    $containerSrcCheck = Get-AzStorageContainer -Context $srcStorageAccountContext
@@ -23,9 +23,6 @@ Catch
 }
 Finally
 {
-    if($containerSrcCheck -eq $null){Write-Output "This is null"}
-    if($containerDestCheck -eq $null){Write-Output "This is alsooooo null"}
-
     if(($containerSrcCheck -eq $null) -and ($containerDestCheck -eq $null)){
         New-AzStorageContainer -Name $srcContainer -Context $srcStorageAccountContext -Permission blob
         New-AzStorageContainer -Name $destContainer -Context $destStorageAccountContext -Permission blob
