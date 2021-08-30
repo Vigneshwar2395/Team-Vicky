@@ -16,10 +16,10 @@ steps:
 - script: hostname
 
 #Use the service connection - Github
-- task: GitHubComment@0
-  inputs:
-    gitHubConnection: 'github.com_shiraZadok'
-    repositoryName: 'shiraZadok/AzureRmPipeline_MTC'
+#- task: GitHubComment@0
+#  inputs:
+#    gitHubConnection: 'github.com_shiraZadok'
+#    repositoryName: 'shiraZadok/AzureRmPipeline_MTC'
 
 
 #Task 2
@@ -73,34 +73,12 @@ steps:
   inputs:
     targetType: 'inline'
     script: |
-      
-      ###Create a dashboard
-      Set-AzContext -SubscriptionId $(subscriptionID)
-      # Dashboard Title
-      $dashboardTitle = 'Shira-Dashboard'
-      # Dashboard Name
-      $dashboardName = $dashboardTitle -replace '\s'
-      # Name of test VM
-      $vmName = 'shiraWindowsServer2'
-
-      #Download the dashboard template
-      $myPortalDashboardTemplateUrl = 'https://raw.githubusercontent.com/shiraZadok/AzureRmPipeline_MTC/main/Dashboard.json'
-      $myPortalDashboardTemplatePath = "$HOME\Dashboard.json"
-      Invoke-WebRequest -Uri $myPortalDashboardTemplateUrl -OutFile $myPortalDashboardTemplatePath -UseBasicParsing
-
-      #Customize the template
-      $Content = Get-Content -Path $myPortalDashboardTemplatePath -Raw
-      $Content = $Content -replace '<subscriptionID>', '$(subscriptionID)'
-      $Content = $Content -replace '<rgName>', '$(myResourceGroupName)'
-      $Content = $Content -replace '<vmName>', '$vmName'
-      $Content = $Content -replace '<dashboardTitle>', $dashboardTitle
-      $Content = $Content -replace '<location>', '$(location)'
-      $Content | Out-File -FilePath $myPortalDashboardTemplatePath -Force
-
-      #Deploy the dashboard template
-      New-AzPortalDashboard -Name $dashboardName`
+     New-AzResourceGroupDeployment -Name Deployment_Create_Dashboard `
       -ResourceGroupName $(myResourceGroupName) `
-      -DashboardPath $myPortalDashboardTemplatePath
+      -TemplateFile 'DashboardTemplate.json' `
+      -TemplateParameterFile 'DashboardParametersFile.json'
+      
+     
 
 
 
