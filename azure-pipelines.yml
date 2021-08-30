@@ -73,10 +73,23 @@ steps:
   inputs:
     targetType: 'inline'
     script: |
-     New-AzResourceGroupDeployment -Name Deployment_Create_Dashboard `
-      -ResourceGroupName $(myResourceGroupName) `
-      -TemplateFile 'DashboardTemplate.json' `
-      -TemplateParameterFile 'DashboardParametersFile.json'
+      
+      #Create a dashboard for the Vm-shiraWindowsServer2
+      #New-AzResourceGroupDeployment -Name Deployment_Create_Dashboard `
+      #-ResourceGroupName $(myResourceGroupName) `
+      #-TemplateFile 'DashboardTemplate.json' `
+      #-TemplateParameterFile 'DashboardParametersFile.json'
+
+      ###list the metric definition of the storage accounts
+      #Storage Account A
+      $resourceId_SA_A = "a8108c2b-496c-424d-8347-ecc8afb6384c"
+      Get-AzMetricDefinition -ResourceId $resourceId_SA_A
+      Get-AzMetric -ResourceId $resourceId_SA_A -MetricNames "UsedCapacity" -TimeGrain 01:00:00
+      #Storage Account B
+      #$resourceId_SA_B = ""
+      #Get-AzMetricDefinition -ResourceId $resourceId
+      # $resourceId = "<resource-ID>"
+      #Get-AzMetric -ResourceId $resourceId -MetricNames "UsedCapacity" -TimeGrain 01:00:00
       
      
 
