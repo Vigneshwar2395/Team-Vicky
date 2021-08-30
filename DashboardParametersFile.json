@@ -15,7 +15,7 @@
       "value": "Simple VM Dashboard"
     },
     "location": {
-      "value": "[resourceGroup().location]"
+      "value": "eastus"
     }
   }
 }
