@@ -65,14 +65,6 @@ steps:
 #       -VMName shiraWindowsServer2 `
 #       -CommandId RunPowerShellScript `
 #       -ScriptPath .\Create_Uplad_CopyBlobs.ps1
-
-#- task: PowerShellOnTargetMachines@3
-#  inputs:
-#    Machines: 'sws2.eastus.cloudapp.azure.com'
-#    UserName: 'shira.zadok'
-#    UserPassword: 'ShSz_2086'
-#    ScriptType: 'FilePath'
-#    ScriptPath: 'C:\Packages\Plugins\Microsoft.CPlat.Core.RunCommandWindows\1.1.8\Downloads\'
       
 
 #Task 6
@@ -82,7 +74,7 @@ steps:
     targetType: 'inline'
     script: |
       
-      #Create a dashboard
+      ###Create a dashboard
       Set-AzContext -SubscriptionId $(subscriptionID)
       # Dashboard Title
       $dashboardTitle = 'Shira-Dashboard'
@@ -127,20 +119,4 @@ steps:
     #  -TimeAggregationOperator Average `
     #  -Action $actionEmail, $actionWebhook `
     #  -Description "alert on CPU > 1%"
-
-#- task: AzureMonitorAlerts@0
-#  inputs:
-#    azureSubscription: $(subscriptionName)
-#    ResourceGroupName: $(ShiraStorageAccount-rg)
-#    ResourceType: 'Microsoft.Compute/virtualMachines'
-#    ResourceName: 'ShiraWindowsServer'
-#    AlertRules: 
-
-#- task: AzureMonitorAlerts@0
-#  inputs:
-#    azureSubscription: $(subscriptionName)
-#    ResourceGroupName: $(ShiraStorageAccount-rg)
-#    ResourceType: 'Microsoft.Storage/storageAccounts'
-#    ResourceName: 'shirastorageaccount0a'
-#    AlertRules:
 
