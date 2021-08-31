@@ -15,56 +15,6 @@ variables:
 steps:
 - script: hostname
 
-#Use the service connection - Github
-- task: GitHubComment@0
-  inputs:
-    gitHubConnection: 'github.com_shiraZadok'
-    repositoryName: 'shiraZadok/AzureRmPipeline_MTC'
-
-
-#Task 2
-#Create an ARM template for storage account
-#And create 2 storage accounts
-- task: PowerShell@2
-  inputs:
-    targetType: 'inline'
-    script: |
-      New-AzResourceGroupDeployment -Name Deployment_Create_storageaccount_A `
-      -ResourceGroupName $(myResourceGroupName) `
-      -TemplateFile 'ARM_Templete_StorageAccount.json' `
-      -TemplateParameterFile 'parameters_sa1.json'
-
-      New-AzResourceGroupDeployment -Name Deployment_Create_storageaccount_B `
-      -ResourceGroupName $(myResourceGroupName) `
-      -TemplateFile 'ARM_Templete_StorageAccount.json' `
-      -TemplateParameterFile 'parameters_sa2.json'
-
-#Task 3
-#Create an ARM template for a Windows server
-- task: PowerShell@2
-  inputs:
-    targetType: 'inline'
-    script: |
-      New-AzResourceGroupDeployment `
-      -Name Deployment_create_VM_2 `
-      -ResourceGroupName '$(myResourceGroupName)' `
-      -TemplateFile 'WindowsServerTemplate2.json' `
-      -TemplateParameterFile 'WindowsServerParameters2.json'
-
-
-#Task 5
-#Create, Upload and Copy 100 blobs from Storage account A to B
-#Execute it on the windows server
-- task: PowerShell@2
-  inputs:
-    targetType: 'inline'
-    script: |
-      Set-AzContext -Subscription $(subscriptionID)   
-      $result = Invoke-AzVMRunCommand `
-       -ResourceGroupName $(myResourceGroupName) `
-       -VMName shiraWindowsServer2 `
-       -CommandId RunPowerShellScript `
-       -ScriptPath .\Create_Uplad_CopyBlobs.ps1
       
 
 #Task 6
@@ -75,10 +25,10 @@ steps:
     script: |
       
       #Create a dashboard for the Vm-shiraWindowsServer2
-      New-AzResourceGroupDeployment -Name Deployment_Create_Dashboard `
-      -ResourceGroupName $(myResourceGroupName) `
-      -TemplateFile 'DashboardTemplate.json' `
-      -TemplateParameterFile 'DashboardParametersFile.json'
+      #New-AzResourceGroupDeployment -Name Deployment_Create_Dashboard `
+      #-ResourceGroupName $(myResourceGroupName) `
+      #-TemplateFile 'DashboardTemplate.json' `
+      #-TemplateParameterFile 'DashboardParametersFile.json'
 
       ###list the metric definition of the storage accounts
       #Storage Account A
