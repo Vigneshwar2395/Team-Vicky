@@ -1,0 +1,77 @@
+SPR
+L00 Admin - 
+	2 groups additional added
+L01 - Measure of Compliance Tracker Tool 
+	 All items view in source not showing but in destination showing
+	2 groups additional added
+
+L01A -Initial Assessments
+	Cannot check list permission
+
+LG01- Glossary
+	Some coloumn are added extra in default view in destination
+	2 groups additional added
+
+T01 - Reports
+	2 groups additional added
+
+WL01 - Email Text
+	2 groups additional added
+
+ZL00A - 2019 Archive Scores
+	2 groups additional added
+
+ZL00B - 2020 Archive Scores
+	2 groups additional added
+
+ZL01 - Archived Assessments 
+	2 groups additional added
+
+
+OSRO
+
+L00-Admin
+	
+	1 group additonal added
+
+L01-OSRO Tracker
+
+	List view are different
+	2 groups additional added
+
+L01A -Initial Assessments
+	
+	1 group additonal added
+
+L02=Bus
+
+	2 groups additional added
+
+L03-OSRO General Information
+
+	2 groups additional added
+
+P01-Documents
+
+	2 groups additional added
+
+Preservation Hold Library
+
+	2 groups additional added
+
+WL01 - Email Text
+
+	2 groups additional added
+
+T01 - Admin Documents
+	
+	1 groups additional added
+	
+ZL00 - Admin Archive
+
+	2 groups additional added
+
+ZL01 - Archived Assessments
+
+	views are changed 
+	2 groups additional added

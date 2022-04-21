@@ -1,0 +1,45 @@
+
+available start date --->list
+available end date --->list
+
+
+form date -->start date
+form end date -->  end date 
+
+
+
+var formatedformstartdate= dateFormat(formstartDate,"yyyy-mm-dd");
+if (!(formatedformstartdate <= listendLDate && formatedformstartdate >= liststartLDate)) {
+
+if (!(formatedformenddate <= listendLDate && formatedformenddate >= liststartLDate)) {
+datetime'2021-08-13T17:00:00Z'
+
+
+"/_api/web/lists/getbytitle('EmployeeDetails')/items?$filter=((FromDate ge datetime'2021-08-15T17:00:00Z') and (FromDate le datetime'2021-08-16T17:00:00Z') or (ToDate ge datetime'2021-08-15T17:00:00Z') and (ToDate le datetime'2021-08-16T17:00:00Z')) or ((datetime'2021-08-15T17:00:00Z'ge FromDate ) and (FromDate  le datetime'2021-08-16T17:00:00Z') or (ToDate ge datetime'2021-08-15T17:00:00Z') and (ToDate le datetime'2021-08-16T17:00:00Z'))
+
+
+(FromDate ge datetime'2016-04-02T07:00:00.000Z') and (ToDate le datetime'2016-04-03T03:30:00.000Z')\
+
+
+EventDate le '@{variables('Date')}T23:59:59Z' and EndDate ge '@{variables('Date')}T00:00:00Z' 
+
+((datetime'2021-08-12T17:00:00Z' ge FromDate) and (datetime'2021-08-12T17:00:00Z' le ToDate) and (datetime'2021-08-14T17:00:00Z' le ToDate) and (datetime'2021-08-14T17:00:00Z' ge FromDate))
+
+
+
+((FromDate ge datetime'2021-08-19T17:00:00Z') and (FromDate le datetime'2021-08-20T17:00:00Z') or (ToDate ge datetime'2021-08-19T17:00:00Z') and (ToDate le datetime'2021-08-20T17:00:00Z')) or ((datetime'2021-08-19T17:00:00Z' ge FromDate ) and (datetime'2021-08-19T17:00:00Z' le ToDate) or (datetime'2021-08-20T17:00:00Z' ge FromDate) and (datetime'2021-08-20T17:00:00Z' le ToDate))
+
+
+((FromDate ge datetime'2021-08-17T17:00:00Z') and (FromDate le datetime'2021-08-20T17:00:00Z') or (ToDate ge datetime'2021-08-17T17:00:00Z') and (ToDate le datetime'2021-08-20T17:00:00Z')) or ((datetime'2021-08-17T17:00:00Z' ge FromDate ) and (datetime'2021-08-17T17:00:00Z' le ToDate) or (datetime'2021-08-20T17:00:00Z' ge FromDate) and (datetime'2021-08-20T17:00:00Z' le ToDate))
+
+
+((FromDate ge datetime'2021-08-17T17:00:00Z') and (FromDate le datetime'2021-08-20T17:00:00Z') or (ToDate ge datetime'2021-08-17T17:00:00Z') and (ToDate le datetime'2021-08-20T17:00:00Z')) or ((datetime'2021-08-17T17:00:00Z' ge FromDate ) and (datetime'2021-08-17T17:00:00Z' le ToDate) or (datetime'2021-08-20T17:00:00Z' ge FromDate) and (datetime'2021-08-20T17:00:00Z' le ToDate))
+
+working:
+
+((FromDate ge datetime'2021-08-17T06:00:00Z') and (FromDate le datetime'2021-08-20T17:00:00Z') or (ToDate ge datetime'2021-08-17T06:00:00Z') and (ToDate le datetime'2021-08-20T17:00:00Z')) or ((datetime'2021-08-17T06:00:00Z' ge FromDate ) and (datetime'2021-08-17T06:00:00Z' le ToDate) or (datetime'2021-08-20T17:00:00Z' ge FromDate) and (datetime'2021-08-20T17:00:00Z' le ToDate))
+
+Working:
+((FromDate ge datetime'2021-08-15T06:00:00Z') and (FromDate le datetime'2021-08-16T17:00:00Z') or (ToDate ge datetime'2021-08-15T06:00:00Z') and (ToDate le datetime'2021-08-16T17:00:00Z'))
+
+((datetime'2021-08-15T06:00:00Z' ge FromDate ) and (datetime'2021-08-15T06:00:00Z' le ToDate) or (datetime'2021-08-16T17:00:00Z' ge FromDate) and (datetime'2021-08-16T17:00:00Z' le ToDate))

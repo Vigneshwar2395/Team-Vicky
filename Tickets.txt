@@ -1,0 +1,41 @@
+CHG0114091
+INC0136497  =- ITSK0045909
+
+KB0141923
+
+PRB0035132
+
+
+[6:48 PM] Raj, Sruthi B SOMLOG-SOMLOG
+    
+
+ITS-APP-IMFFV-CSA_164396-SA@ShellCorp.onmicrosoft.com
+SpocloudMarch@2021
+
+[4/30 6:48 PM] Raj, Sruthi B SOMLOG-SOMLOG
+    
+
+ITS-APP-IMFFV-CSA_164396-SA@ShellCorp.onmicrosoft.com
+SpocloudMarch@2021
+SpocloudMay@2021
+SpocloudJune@2021
+SpocloudAug@2021
+Reyes, Jenity ITSSEUS-ITSS-SD
+
+
+stan@ronvanderhamdevelopment.onmicrosoft.com
+Sharepoint0nlineCGI
+Sharepoint@CGI
+SharepointOnline@CGI
+
+Wubo9848
+billy@ronvanderhamdevelopment.onmicrosoft.com 
+Sharepoint0nlineCGI
+
+
+butters@ronvanderhamdevelopment.onmicrosoft.com
+Tawu9316
+
+D.Mariappan@shelldevelopment.onmicrosoft.com
+
+https:///_api/web/lists/GetByTitle('')/items()?$select=reminder

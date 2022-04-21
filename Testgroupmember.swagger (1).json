@@ -1,0 +1,83 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "Testgroupmember",
+    "description": "",
+    "version": "1.0"
+  },
+  "host": "graph.microsoft.com",
+  "basePath": "/",
+  "schemes": [
+    "https"
+  ],
+  "consumes": [],
+  "produces": [],
+  "paths": {
+    "/v1.0/groups": {
+      "get": {
+        "responses": {
+          "default": {
+            "description": "default",
+            "schema": {}
+          }
+        },
+        "summary": "getgroupDetails",
+        "description": "getgroupDetails",
+        "operationId": "getgroupDetails",
+        "parameters": [
+          {
+            "name": "$filter",
+            "in": "query",
+            "required": true,
+            "type": "string",
+            "default": "mail eq ''"
+          }
+        ]
+      }
+    },
+    "/beta/groups": {},
+    "/v1.0/groups/{groupid}/members": {
+      "get": {
+        "responses": {
+          "default": {
+            "description": "default",
+            "schema": {}
+          }
+        },
+        "summary": "getgroupmembers",
+        "description": "getgroupmembers",
+        "operationId": "getgroupmembers",
+        "parameters": [
+          {
+            "name": "groupid",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ]
+      }
+    }
+  },
+  "definitions": {},
+  "parameters": {},
+  "responses": {},
+  "securityDefinitions": {
+    "undefined": {
+      "type": "oauth2",
+      "flow": "accessCode",
+      "authorizationUrl": "https://login.windows.net/common/oauth2/authorize",
+      "tokenUrl": "https://login.windows.net/common/oauth2/authorize",
+      "scopes": {
+        "https://graph.microsoft.com/.default": "https://graph.microsoft.com/.default"
+      }
+    }
+  },
+  "security": [
+    {
+      "undefined": [
+        "https://graph.microsoft.com/.default"
+      ]
+    }
+  ],
+  "tags": []
+}

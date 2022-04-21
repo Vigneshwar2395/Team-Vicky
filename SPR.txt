@@ -1,0 +1,2 @@
+default mode of sharepoint form
+If(formType="New", FormMode.New, FormMode.Edit)
